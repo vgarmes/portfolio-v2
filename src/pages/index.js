@@ -5,7 +5,7 @@ import Jobs from "../components/Jobs"
 import Projects from "../components/Projects"
 import { graphql } from "gatsby"
 
-const IndexPage = ({ data }) => {
+export default ({ data }) => {
   const {
     allStrapiProject: { nodes: projects },
   } = data
@@ -43,5 +43,3 @@ export const query = graphql`
     }
   }
 `
-
-export default IndexPage
