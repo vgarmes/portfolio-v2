@@ -6,6 +6,14 @@
 
 module.exports = {
   /* Your site config here */
+  siteMetadata: {
+    title: `Victor Garcia Portfolio`,
+    description: `Personal web development porfolio of Victor Garcia Mestre`,
+    titleTemplate: `%s | Victor Garcia Portfolio`,
+    url: ``,
+    twitterUsername: `@vgmestre`,
+    image: ``,
+  },
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
