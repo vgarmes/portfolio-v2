@@ -1,5 +1,4 @@
 import React from "react"
-import Layout from "../components/Layout"
 import Hero from "../components/Hero"
 import Jobs from "../components/Jobs"
 import Projects from "../components/Projects"
@@ -10,11 +9,11 @@ export default ({ data }) => {
     allStrapiProject: { nodes: projects },
   } = data
   return (
-    <Layout>
+    <main>
       <Hero />
       <Jobs />
       <Projects title="featured projects" projects={projects} />
-    </Layout>
+    </main>
   )
 }
 
