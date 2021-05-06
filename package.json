@@ -17,6 +17,7 @@
     "gatsby": "^3.4.0",
     "gatsby-plugin-image": "^1.4.0",
     "gatsby-plugin-sharp": "^3.4.0",
+    "gatsby-plugin-webfonts": "^2.1.0",
     "gatsby-source-filesystem": "^3.4.0",
     "gatsby-source-strapi": "^1.0.0-alpha.1",
     "gatsby-transformer-sharp": "^3.4.0",
