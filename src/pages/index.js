@@ -2,6 +2,7 @@ import React from "react"
 import Hero from "../components/Hero"
 import Jobs from "../components/Jobs"
 import Projects from "../components/Projects"
+import Seo from "../components/Seo"
 import { graphql } from "gatsby"
 
 export default ({ data }) => {
@@ -9,11 +10,14 @@ export default ({ data }) => {
     allStrapiProject: { nodes: projects },
   } = data
   return (
-    <main>
-      <Hero />
-      <Jobs />
-      <Projects title="featured projects" projects={projects} />
-    </main>
+    <>
+      <Seo title="Home" />
+      <main>
+        <Hero />
+        <Jobs />
+        <Projects title="featured projects" projects={projects} />
+      </main>
+    </>
   )
 }
 
