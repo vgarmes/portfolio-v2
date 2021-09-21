@@ -39,6 +39,9 @@ module.exports = {
             {
               family: "Open Sans",
             },
+            {
+              family: "DM Serif Text",
+            },
           ],
         },
       },
