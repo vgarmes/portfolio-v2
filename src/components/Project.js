@@ -21,7 +21,11 @@ const StyledProject = styled.article`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom right, var(--clr-primary-5), #222);
+    background: linear-gradient(
+      to bottom right,
+      var(--clr-primary-5),
+      var(--clr-primary-1)
+    );
     opacity: 0.85;
     transition: var(--transition);
   }
@@ -31,11 +35,23 @@ const StyledProject = styled.article`
     }
   }
 
+  @media screen and (max-width: 991px) {
+    .project-img::after {
+      display: none;
+    }
+  }
+
   .project-info {
     background: var(--clr-white);
-    padding: 1rem 2rem;
+    padding: 2rem;
     border-bottom-left-radius: var(--radius);
     border-bottom-right-radius: var(--radius);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    .project-info {
+      padding: 1rem;
+    }
   }
   .project-number {
     display: inline-block;
@@ -43,20 +59,23 @@ const StyledProject = styled.article`
     color: var(--clr-primary-5);
     margin-bottom: 0.75rem;
   }
-  .project-slug h3 {
-    font-weight: 500;
-    font-size: 1.25rem;
+  .project-header {
+    ${({ theme }) => theme.mixins.flexBetween};
     margin-bottom: 1.5rem;
-    text-transform: uppercase;
+  }
+  .project-slug h3 {
+    font-size: 1.25rem;
+    text-transform: capitalize;
     color: var(--clr-grey-1);
     transition: var(--transition);
+    margin-bottom: 0;
   }
   .project-slug h3:hover {
     color: var(--clr-primary-5);
   }
   .project-desc {
     word-spacing: 15px;
-    color: var(--clr-grey-3);
+    color: var(--clr-grey-1);
   }
   .project-stack {
     margin-bottom: 1rem;
@@ -76,11 +95,15 @@ const StyledProject = styled.article`
   .about-stack span {
     margin-top: 0.5rem;
   }
+  .project-links {
+    ${({ theme }) => theme.mixins.flexBetween};
+  }
   .project-icon {
     color: var(--clr-primary-5);
     font-size: 1.25rem;
-    margin-right: 0.5rem;
+    margin-left: 1rem;
     transition: var(--transition);
+    vertical-align: middle;
   }
   .project-icon:hover {
     color: var(--clr-primary-1);
@@ -115,13 +138,13 @@ const StyledProject = styled.article`
       grid-column: 5 /12;
       grid-row: 1 / 1;
     }
-    &:nth-of-type(even) {
+    &:nth-of-type(odd) {
       .project-img {
         grid-column: 5 / -1;
         grid-row: 1 / 1;
       }
     }
-    &:nth-of-type(even) {
+    &:nth-of-type(odd) {
       .project-info {
         grid-column: 2 / span 7;
         grid-row: 1 / 1;
@@ -138,7 +161,6 @@ const Project = ({
   stack,
   url,
   image,
-  index,
   projectRef,
 }) => {
   return (
@@ -149,23 +171,25 @@ const Project = ({
         alt={title}
       />
       <div className="project-info">
-        <span className="project-number">0{index + 1}.</span>
-        <Link to={url} className="project-slug">
-          <h3>{title}</h3>
-        </Link>
+        <div className="project-header">
+          <Link to={url} className="project-slug">
+            <h3>{title}</h3>
+          </Link>
+          <div className="project-links">
+            <a href={github}>
+              <FaGithubSquare className="project-icon" />
+            </a>
+            <a href={url}>
+              <FaShareSquare className="project-icon" />
+            </a>
+          </div>
+        </div>
+
         <p className="project-desc">{description}</p>
         <div className="project-stack">
           {stack.map(item => {
             return <span key={item.id}>{item.name}</span>
           })}
-        </div>
-        <div className="project-links">
-          <a href={github}>
-            <FaGithubSquare className="project-icon" />
-          </a>
-          <a href={url}>
-            <FaShareSquare className="project-icon" />
-          </a>
         </div>
       </div>
     </StyledProject>
