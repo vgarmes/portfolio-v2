@@ -30,7 +30,7 @@
     "react-icons": "^4.2.0",
     "react-transition-group": "^4.4.2",
     "scrollreveal": "^4.0.9",
-    "styled-components": "^5.3.0"
+    "styled-components": "^5.3.1"
   },
   "devDependencies": {
     "prettier": "2.2.1"
