@@ -3,7 +3,6 @@ import { CSSTransition, TransitionGroup } from "react-transition-group"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import socialLinks from "../constants/social_links"
-import { StaticImage } from "gatsby-plugin-image"
 import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion"
 import { navigationDelay, loaderDelay } from "../utils"
 
@@ -16,19 +15,28 @@ const StyledHeroSection = styled.section`
   @media (max-width: 480px) and (min-height: 700px) {
     padding-bottom: 10vh;
   }
-  h1 {
-    margin: 0 0 15px 4px;
-    font-family: var(--ff-secondary);
+  h2 {
+    margin-bottom: 15px;
+    font-family: var(--ff-primary);
     font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
-    font-weight: 400;
+    font-weight: 600;
     @media (max-width: 480px) {
-      margin: 0 0 10px 2px;
+      margin-bottom: 2em;
     }
   }
   h3 {
     margin-top: 10px;
-    color: var(--clr-primary-2);
+    color: var(--clr-primary-4-lightest);
     line-height: 0.9;
+  }
+
+  .big-heading {
+    margin: 0;
+    font-size: clamp(40px, 8vw, 80px);
+  }
+
+  .subtitle {
+    margin-top: 1em;
   }
   p {
     margin: 20px 0 0;
@@ -46,14 +54,13 @@ const StyledHeroSection = styled.section`
   }
   .social-link {
     font-size: 1.25rem;
-    color: var(--clr-primary-2-lighter);
     transition: var(--transition);
     opacity: 0.85;
   }
   .social-link:hover {
     opacity: 1;
     transform: scale(1.2, 1.2);
-    color: var(--clr-primary-2-lightest);
+    color: var(--clr-white);
   }
 `
 
@@ -68,18 +75,20 @@ const Hero = () => {
 
     const timeout = setTimeout(() => setIsMounted(true), navigationDelay)
     return () => clearTimeout(timeout)
-  }, [])
+  }, [prefersReducedMotion])
 
   const textContent = (
     <>
-      <h1>Hi, i'm</h1>
-      <h2 className="big-heading">Victor Garcia.</h2>
-      <h3 className="big-heading">web developer</h3>
+      <h2>Hi, my name is</h2>
+      <h1 className="big-heading">Victor Garcia.</h1>
+      <h2 className="subtitle">
+        <span>I am a </span>web developer
+      </h2>
     </>
   )
 
   const contactButton = (
-    <Link to="/contact" className="contact-btn">
+    <Link to="/#contact" className="contact-btn">
       contact me
     </Link>
   )
