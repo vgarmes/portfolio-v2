@@ -2,9 +2,7 @@ import React, { useState, useRef } from "react"
 import { Helmet } from "react-helmet"
 import styled from "styled-components"
 import navLinks from "../constants/links"
-import socialLinks from "../constants/social_links"
 import { Link } from "gatsby"
-import { FaTimes, FaAlignRight } from "react-icons/fa"
 import useOnClickOutside from "../hooks/useOnClickOutside"
 
 const StyledMenu = styled.div`
@@ -97,7 +95,7 @@ const StyledSidebar = styled.aside`
     width: min(75vw, 400px);
     height: 100vh;
     outline: 0;
-    background-color: var(--clr-primary-5);
+    background-color: var(--clr-primary-1);
     box-shadow: -10px 0px 30px -15px black;
     z-index: 9;
     transform: translateX(${props => (props.isOpen ? 0 : 100)}vw);
@@ -112,7 +110,7 @@ const StyledSidebar = styled.aside`
     font-family: var(--ff-primary);
     text-align: center;
   }
-  ol {
+  ul {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -120,17 +118,9 @@ const StyledSidebar = styled.aside`
     li {
       position: relative;
       margin: 0 auto 20px;
-      counter-increment: item 1;
       font-size: clamp(var(--fz-sm), 4vw, var(--fz-lg));
       @media (max-width: 600px) {
         margin: 0 auto 10px;
-      }
-      &:before {
-        content: "0" counter(item) ".";
-        display: block;
-        margin-bottom: 5px;
-        color: var(--clr-primary-4);
-        font-size: var(--fz-sm);
       }
     }
     a {
@@ -148,7 +138,7 @@ const StyledSidebar = styled.aside`
   }
 `
 
-const Sidebar = ({}) => {
+const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleSidebar = () => {
@@ -178,7 +168,7 @@ const Sidebar = ({}) => {
 
         <StyledSidebar isOpen={isOpen} aria-hidden={!isOpen}>
           <nav>
-            <ol>
+            <ul>
               {navLinks.map(({ id, url, text }) => (
                 <li key={id}>
                   <Link to={url} onClick={() => setIsOpen(false)}>
@@ -186,7 +176,7 @@ const Sidebar = ({}) => {
                   </Link>
                 </li>
               ))}
-            </ol>
+            </ul>
           </nav>
         </StyledSidebar>
       </div>
