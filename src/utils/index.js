@@ -1,6 +1,3 @@
-export const navigationDelay = 1000
-export const loaderDelay = 2000
-
 export const srConfig = (delay = 200, viewFactor = 0.25) => ({
   origin: "bottom",
   distance: "20px",

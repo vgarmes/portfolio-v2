@@ -4,7 +4,6 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 import socialLinks from "../constants/social_links"
 import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion"
-import { navigationDelay, loaderDelay } from "../utils"
 
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -73,7 +72,7 @@ const Hero = () => {
       return
     }
 
-    const timeout = setTimeout(() => setIsMounted(true), navigationDelay)
+    const timeout = setTimeout(() => setIsMounted(true), 100)
     return () => clearTimeout(timeout)
   }, [prefersReducedMotion])
 
@@ -119,7 +118,7 @@ const Hero = () => {
         <TransitionGroup component={null}>
           {isMounted &&
             items.map((item, i) => (
-              <CSSTransition key={i} classNames="fadeup" timeout={loaderDelay}>
+              <CSSTransition key={i} classNames="fadeup" timeout={2000}>
                 <div style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
               </CSSTransition>
             ))}
