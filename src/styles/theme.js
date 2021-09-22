@@ -1,16 +1,16 @@
 import mixins from "./mixins"
 
 const theme = {
-  bp: {
-    mobileS: `max-width: 330px`,
-    mobileM: `max-width: 400px`,
-    mobileL: `max-width: 480px`,
-    tabletS: `max-width: 600px`,
-    tabletL: `max-width: 768px`,
-    desktopXS: `max-width: 900px`,
-    desktopS: `max-width: 1080px`,
-    desktopM: `max-width: 1200px`,
-    desktopL: `max-width: 1400px`,
+  breakpoints: {
+    mobileS: `330px`,
+    mobileM: `400px`,
+    mobileL: `480px`,
+    tabletS: `600px`,
+    tabletL: `768px`,
+    desktopXS: `900px`,
+    desktopS: `1080px`,
+    desktopM: `1200px`,
+    desktopL: `1400px`,
   },
   mixins,
 }
