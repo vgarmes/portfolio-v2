@@ -17,7 +17,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`, // Needed for dynamic images],
+    `gatsby-transformer-sharp`, // Needed for dynamic images
     {
       resolve: `gatsby-source-strapi`,
       options: {
@@ -41,6 +41,10 @@ module.exports = {
             },
             {
               family: "DM Serif Text",
+            },
+            {
+              family: "Poppins",
+              variants: ["400", "500", "600", "700"],
             },
           ],
         },
