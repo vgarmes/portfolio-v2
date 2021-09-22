@@ -14,6 +14,7 @@ const variables = css`
     --clr-primary-2-lightest: #def2f1;
     --clr-primary-2-lighter: #bcdbda;
     --clr-primary-4-lighter: #ff807e;
+    --clr-primary-4-lightest: #fae5df;
     --clr-primary-7: hsl(184, 65%, 59%);
     --clr-primary-8: hsl(184, 80%, 74%);
     --clr-primary-9: hsl(185, 94%, 87%);
@@ -32,8 +33,8 @@ const variables = css`
     --clr-red-light: hsl(360, 71%, 66%);
     --clr-white: #fff;
 
-    --ff-primary: "DM Serif Text", "Open Sans", sans-serif;
-    --ff-secondary: "Roboto", sans-serif;
+    --ff-primary: "Poppins", sans-serif;
+    --ff-secondary: "DM Serif Text", "Open Sans", sans-serif;
     --fz-xxs: 12px;
     --fz-xs: 13px;
     --fz-sm: 14px;
