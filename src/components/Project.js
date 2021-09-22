@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { FaGithubSquare, FaShareSquare } from "react-icons/fa"
-import { Link } from "gatsby"
 
 const StyledProject = styled.article`
   display: grid;
@@ -172,9 +171,9 @@ const Project = ({
       />
       <div className="project-info">
         <div className="project-header">
-          <Link to={url} className="project-slug">
+          <a href={url} className="project-slug">
             <h3>{title}</h3>
-          </Link>
+          </a>
           <div className="project-links">
             <a href={github}>
               <FaGithubSquare className="project-icon" />
