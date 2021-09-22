@@ -44,7 +44,7 @@ const Layout = ({ children, location }) => {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Navbar isHome={isHome} />
-        {children}
+        <div id="content">{children}</div>
         <Footer />
       </ThemeProvider>
     </>
