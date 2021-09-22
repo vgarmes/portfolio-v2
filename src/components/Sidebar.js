@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { Helmet } from "react-helmet"
 import styled from "styled-components"
 import navLinks from "../constants/links"
@@ -118,7 +118,7 @@ const StyledSidebar = styled.aside`
     li {
       position: relative;
       margin: 0 auto 20px;
-      font-size: clamp(var(--fz-sm), 4vw, var(--fz-lg));
+      font-size: clamp(var(--fz-sm), 4vw, var(--fz-xxl));
       @media (max-width: 600px) {
         margin: 0 auto 10px;
       }
@@ -144,6 +144,19 @@ const Sidebar = () => {
   const toggleSidebar = () => {
     setIsOpen(!isOpen)
   }
+
+  const onResize = e => {
+    if (e.currentTarget.innerWidth > 768) {
+      setIsOpen(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", onResize)
+    return () => {
+      window.removeEventListener("resize", onResize)
+    }
+  }, [])
 
   // close sidebar when clicking outside
   const wrapperRef = useRef()
