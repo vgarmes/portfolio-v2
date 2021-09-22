@@ -48,6 +48,14 @@ const Seo = ({ title, description }) => {
       {seo.description && (
         <meta property="og:description" content={seo.description} />
       )}
+
+      <meta name="twitter:card" content="summary_large_image" />
+      {twitterUsername && (
+        <meta name="twitter:creator" content={twitterUsername} />
+      )}
+      <meta name="twitter:title" content={seo.title} />
+      <meta name="twitter:description" content={seo.description} />
+      <meta name="twitter:image" content={image} />
     </Helmet>
   )
 }
