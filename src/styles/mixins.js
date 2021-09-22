@@ -11,6 +11,10 @@ const mixins = {
     justify-content: center;
     align-items: center;
   `,
+  flexStart: css`
+    display: flex;
+    align-items: center;
+  `,
   link: css`
     display: inline-block;
     text-decoration: none;
@@ -44,7 +48,7 @@ const mixins = {
     &:hover,
     &:focus,
     &:active {
-      background: var(--clr-primary-2-lightest);
+      background: var(--clr-primary-4-lightest);
       outline: none;
     }
     &:after {
