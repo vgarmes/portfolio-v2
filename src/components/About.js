@@ -146,7 +146,7 @@ const About = () => {
           </div>
           <ul className="skills-list">
             {icons.map(({ name, icon }, index) => (
-              <li>
+              <li key={index}>
                 {React.cloneElement(icon, {
                   key: index,
                   size: "1.5em",
