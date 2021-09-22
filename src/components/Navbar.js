@@ -164,7 +164,7 @@ const Navbar = ({ isHome }) => {
             <TransitionGroup component={null}>
               {isMounted && (
                 <CSSTransition classNames={fadeClass} timeout={timeout}>
-                  <>{Logo}</>
+                  {Logo}
                 </CSSTransition>
               )}
             </TransitionGroup>
