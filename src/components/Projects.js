@@ -16,7 +16,7 @@ const Projects = ({ title, projects }) => {
     }
 
     sr.reveal(titleRef.current, srConfig())
-    projectsRef.current.forEach((ref, i) => sr.reveal(ref, srConfig()))
+    projectsRef.current.forEach(ref => sr.reveal(ref, srConfig()))
   }, [prefersReducedMotion])
 
   return (
