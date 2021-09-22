@@ -37,9 +37,6 @@ module.exports = {
               variants: ["400", "700"],
             },
             {
-              family: "Open Sans",
-            },
-            {
               family: "DM Serif Text",
             },
             {
