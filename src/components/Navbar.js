@@ -75,7 +75,7 @@ const StyledLinks = styled.div`
   @media (max-width: 768px) {
     display: none;
   }
-  ol {
+  ul {
     ${({ theme }) => theme.mixins.flexBetween};
     padding: 0;
     margin: 0;
@@ -83,18 +83,12 @@ const StyledLinks = styled.div`
     li {
       margin: 0 5px;
       position: relative;
-      counter-increment: item 1;
+      font-weight: 600;
       font-size: var(--fz-md);
+      letter-spacing: 0.2em;
       a {
         text-transform: capitalize;
         padding: 10px;
-        &:before {
-          content: "0" counter(item) ".";
-          margin-right: 5px;
-          color: var(--clr-primary-4);
-          font-size: var(--fz-xs);
-          text-align: right;
-        }
       }
     }
   }
@@ -130,7 +124,7 @@ const Navbar = ({ isHome }) => {
       clearTimeout(timeout)
       window.removeEventListener("scroll", handleScroll)
     }
-  }, [])
+  }, [prefersReducedMotion])
 
   const timeout = isHome ? 2000 : 0
   const fadeClass = isHome ? "fade" : ""
@@ -154,7 +148,7 @@ const Navbar = ({ isHome }) => {
             {Logo}
 
             <StyledLinks>
-              <ol>
+              <ul>
                 {pageLinks.map(({ id, text, url }) => {
                   return (
                     <li key={id}>
@@ -162,7 +156,7 @@ const Navbar = ({ isHome }) => {
                     </li>
                   )
                 })}
-              </ol>
+              </ul>
             </StyledLinks>
           </>
         ) : (
@@ -176,7 +170,7 @@ const Navbar = ({ isHome }) => {
             </TransitionGroup>
 
             <StyledLinks>
-              <ol>
+              <ul>
                 <TransitionGroup component={null}>
                   {isMounted &&
                     pageLinks.map(({ id, url, text }) => (
@@ -196,7 +190,7 @@ const Navbar = ({ isHome }) => {
                       </CSSTransition>
                     ))}
                 </TransitionGroup>
-              </ol>
+              </ul>
             </StyledLinks>
             <Sidebar />
           </>
