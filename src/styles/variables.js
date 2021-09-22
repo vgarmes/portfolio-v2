@@ -34,7 +34,7 @@ const variables = css`
     --clr-white: #fff;
 
     --ff-primary: "Poppins", sans-serif;
-    --ff-secondary: "DM Serif Text", "Open Sans", sans-serif;
+    --ff-secondary: "DM Serif Text", "Roboto", sans-serif;
     --fz-xxs: 12px;
     --fz-xs: 13px;
     --fz-sm: 14px;
