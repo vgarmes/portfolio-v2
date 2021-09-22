@@ -1,7 +1,4 @@
 import React, { useEffect } from "react"
-import { ThemeProvider } from "styled-components"
-import GlobalStyle from "../styles/GlobalStyle"
-import theme from "../styles/theme"
 import Navbar from "./Navbar"
 import Footer from "./Footer"
 
@@ -41,12 +38,9 @@ const Layout = ({ children, location }) => {
 
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Navbar isHome={isHome} />
-        <div id="content">{children}</div>
-        <Footer />
-      </ThemeProvider>
+      <Navbar isHome={isHome} />
+      <div id="content">{children}</div>
+      <Footer />
     </>
   )
 }
