@@ -32,6 +32,13 @@ const animations = {
 `,
 }
 
+const Wrapper = styled.div`
+  @media (prefers-reduced-motion: no-preference) {
+    animation-name: ${({ direction }) => animations[direction]};
+    animation-fill-mode: backwards;
+  }
+`
+
 const Fade = ({
   direction = "in",
   duration = 300,
@@ -40,12 +47,6 @@ const Fade = ({
   children,
   ...delegated
 }) => {
-  const Wrapper = styled.div`
-    @media (prefers-reduced-motion: no-preference) {
-      animation-name: ${animations[direction]};
-      animation-fill-mode: backwards;
-    }
-  `
   if (isDisabled) {
     return React.cloneElement(children, { ...delegated })
   }
@@ -53,6 +54,7 @@ const Fade = ({
   return (
     <Wrapper
       {...delegated}
+      direction={direction}
       style={{
         ...(delegated.style || {}),
         animationDuration: `${duration}ms`,
