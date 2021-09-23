@@ -18,6 +18,7 @@ const StyledHamburgerButton = styled.button`
   @media (max-width: 768px) {
     ${({ theme }) => theme.mixins.flexCenter};
     position: relative;
+    cursor: pointer;
     z-index: 10;
     margin-right: -15px;
     padding: 15px;
