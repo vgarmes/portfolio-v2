@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 import socialLinks from "../constants/social_links"
 import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion"
+import useHasMounted from "../hooks/useHasMounted"
 
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -64,7 +65,8 @@ const StyledHeroSection = styled.section`
 `
 
 const Hero = () => {
-  const [isMounted, setIsMounted] = useState(false)
+  const hasMounted = useHasMounted()
+  const [triggerAnim, setTriggerAnim] = useState(false)
   const prefersReducedMotion = usePrefersReducedMotion()
 
   useEffect(() => {
@@ -72,7 +74,7 @@ const Hero = () => {
       return
     }
 
-    const timeout = setTimeout(() => setIsMounted(true), 100)
+    const timeout = setTimeout(() => setTriggerAnim(true), 100)
     return () => clearTimeout(timeout)
   }, [prefersReducedMotion])
 
@@ -106,6 +108,10 @@ const Hero = () => {
 
   const items = [textContent, contactButton, social]
 
+  if (!hasMounted) {
+    return <StyledHeroSection />
+  }
+
   return (
     <StyledHeroSection>
       {prefersReducedMotion ? (
@@ -116,7 +122,7 @@ const Hero = () => {
         </>
       ) : (
         <TransitionGroup component={null}>
-          {isMounted &&
+          {triggerAnim &&
             items.map((item, i) => (
               <CSSTransition key={i} classNames="fadeup" timeout={2000}>
                 <div style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
