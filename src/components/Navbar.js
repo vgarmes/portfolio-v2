@@ -141,7 +141,7 @@ const Navbar = ({ isHome }) => {
   )
 
   if (!hasMounted) {
-    return null
+    return <StyledHeader />
   }
 
   return (
