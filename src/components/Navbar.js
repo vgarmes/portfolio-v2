@@ -4,6 +4,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group"
 import logo from "../assets/images/android-chrome-192x192.png"
 import pageLinks from "../constants/links"
 import { Link } from "gatsby"
+import useHasMounted from "../hooks/useHasMounted"
 import useScrollDirection from "../hooks/useScrollDirection"
 import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion"
 import Sidebar from "./Sidebar"
@@ -100,7 +101,7 @@ const StyledLinks = styled.div`
 `
 
 const Navbar = ({ isHome }) => {
-  const [isMounted, setIsMounted] = useState(false)
+  const hasMounted = useHasMounted()
   const [triggerAnimation, setTriggerAnimation] = useState(!isHome)
   const scrollDirection = useScrollDirection("down")
   const [scrolledToTop, setScrolledToTop] = useState(true)
@@ -114,8 +115,6 @@ const Navbar = ({ isHome }) => {
     if (prefersReducedMotion) {
       return
     }
-
-    setIsMounted(true)
 
     const timeout = setTimeout(() => {
       setTriggerAnimation(true)
@@ -141,7 +140,7 @@ const Navbar = ({ isHome }) => {
     </div>
   )
 
-  if (!isMounted) {
+  if (!hasMounted) {
     return null
   }
 
