@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react"
-import { CSSTransition, TransitionGroup } from "react-transition-group"
+import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import socialLinks from "../constants/social_links"
-import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion"
 import useHasMounted from "../hooks/useHasMounted"
+import Fade from "./Fade"
 
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -66,17 +65,6 @@ const StyledHeroSection = styled.section`
 
 const Hero = () => {
   const hasMounted = useHasMounted()
-  const [triggerAnim, setTriggerAnim] = useState(false)
-  const prefersReducedMotion = usePrefersReducedMotion()
-
-  useEffect(() => {
-    if (prefersReducedMotion) {
-      return
-    }
-
-    const timeout = setTimeout(() => setTriggerAnim(true), 100)
-    return () => clearTimeout(timeout)
-  }, [prefersReducedMotion])
 
   const textContent = (
     <>
@@ -114,22 +102,11 @@ const Hero = () => {
 
   return (
     <StyledHeroSection>
-      {prefersReducedMotion ? (
-        <>
-          {items.map((item, i) => (
-            <div key={i}>{item}</div>
-          ))}
-        </>
-      ) : (
-        <TransitionGroup component={null}>
-          {triggerAnim &&
-            items.map((item, i) => (
-              <CSSTransition key={i} classNames="fadeup" timeout={2000}>
-                <div style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
-              </CSSTransition>
-            ))}
-        </TransitionGroup>
-      )}
+      {items.map((item, i) => (
+        <Fade key={i} direction="up" duration={1000} delay={i * 100}>
+          {item}
+        </Fade>
+      ))}
     </StyledHeroSection>
   )
 }

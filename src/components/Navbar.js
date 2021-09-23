@@ -8,6 +8,7 @@ import useHasMounted from "../hooks/useHasMounted"
 import useScrollDirection from "../hooks/useScrollDirection"
 import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion"
 import Sidebar from "./Sidebar"
+import Fade from "./Fade"
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -102,35 +103,18 @@ const StyledLinks = styled.div`
 
 const Navbar = ({ isHome }) => {
   const hasMounted = useHasMounted()
-  const [triggerAnimation, setTriggerAnimation] = useState(!isHome)
   const scrollDirection = useScrollDirection("down")
   const [scrolledToTop, setScrolledToTop] = useState(true)
-  const prefersReducedMotion = usePrefersReducedMotion()
 
   const handleScroll = () => {
     setScrolledToTop(window.pageYOffset < 50)
   }
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      return
-    }
-
-    const timeout = setTimeout(() => {
-      setTriggerAnimation(true)
-    }, 100)
-
     window.addEventListener("scroll", handleScroll)
 
-    return () => {
-      clearTimeout(timeout)
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [prefersReducedMotion])
-
-  const timeout = isHome ? 2000 : 0
-  const fadeClass = isHome ? "fade" : ""
-  const fadeDownClass = isHome ? "fadedown" : ""
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const Logo = (
     <div className="logo">
@@ -150,58 +134,28 @@ const Navbar = ({ isHome }) => {
       scrolledToTop={scrolledToTop}
     >
       <StyledNav>
-        {prefersReducedMotion ? (
-          <>
-            {Logo}
+        <Fade isDisabled={!isHome}>{Logo}</Fade>
+        <StyledLinks>
+          <ul>
+            {pageLinks.map(({ id, text, url }, index) => {
+              return (
+                <Fade
+                  key={id}
+                  direction="down"
+                  duration={500}
+                  delay={index * 50}
+                  isDisabled={!isHome}
+                >
+                  <li>
+                    <Link to={url}>{text}</Link>
+                  </li>
+                </Fade>
+              )
+            })}
+          </ul>
+        </StyledLinks>
 
-            <StyledLinks>
-              <ul>
-                {pageLinks.map(({ id, text, url }) => {
-                  return (
-                    <li key={id}>
-                      <Link to={url}>{text}</Link>
-                    </li>
-                  )
-                })}
-              </ul>
-            </StyledLinks>
-          </>
-        ) : (
-          <>
-            <TransitionGroup component={null}>
-              {triggerAnimation && (
-                <CSSTransition classNames={fadeClass} timeout={timeout}>
-                  {Logo}
-                </CSSTransition>
-              )}
-            </TransitionGroup>
-
-            <StyledLinks>
-              <ul>
-                <TransitionGroup component={null}>
-                  {triggerAnimation &&
-                    pageLinks.map(({ id, url, text }) => (
-                      <CSSTransition
-                        key={id}
-                        classNames={fadeDownClass}
-                        timeout={timeout}
-                      >
-                        <li
-                          key={id}
-                          style={{
-                            transitionDelay: `${isHome ? id * 100 : 0}ms`,
-                          }}
-                        >
-                          <Link to={url}>{text}</Link>
-                        </li>
-                      </CSSTransition>
-                    ))}
-                </TransitionGroup>
-              </ul>
-            </StyledLinks>
-            <Sidebar />
-          </>
-        )}
+        <Sidebar />
       </StyledNav>
     </StyledHeader>
   )
