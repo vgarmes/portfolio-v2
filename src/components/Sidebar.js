@@ -43,7 +43,8 @@ const StyledHamburgerButton = styled.button`
     width: var(--hamburger-width);
     height: 2px;
     border-radius: var(--border-radius);
-    background-color: var(--clr-primary-4);
+    background-color: ${({ isOpen }) =>
+      isOpen ? `var(--clr-primary-4)` : `var(--clr-white)`};
     transition-duration: 0.22s;
     transition-property: transform;
     transition-delay: ${props => (props.isOpen ? `0.12s` : `0s`)};
@@ -62,7 +63,8 @@ const StyledHamburgerButton = styled.button`
       width: var(--hamburger-width);
       height: 2px;
       border-radius: 4px;
-      background-color: var(--clr-primary-4);
+      background-color: ${({ isOpen }) =>
+        isOpen ? `var(--clr-primary-4)` : `var(--clr-white)`};
       transition-timing-function: ease;
       transition-duration: 0.15s;
       transition-property: transform;
