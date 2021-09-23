@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react"
 import styled, { css } from "styled-components"
-import { CSSTransition, TransitionGroup } from "react-transition-group"
 import logo from "../assets/images/android-chrome-192x192.png"
 import pageLinks from "../constants/links"
 import { Link } from "gatsby"
 import useHasMounted from "../hooks/useHasMounted"
 import useScrollDirection from "../hooks/useScrollDirection"
-import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion"
 import Sidebar from "./Sidebar"
 import Fade from "./Fade"
 
@@ -72,8 +70,7 @@ const StyledNav = styled.nav`
 `
 
 const StyledLinks = styled.div`
-  display: flex;
-  align-items: center;
+  ${({ theme }) => theme.mixins.flexEnd};
   @media (max-width: 768px) {
     display: none;
   }
@@ -135,27 +132,30 @@ const Navbar = ({ isHome }) => {
     >
       <StyledNav>
         <Fade isDisabled={!isHome}>{Logo}</Fade>
-        <StyledLinks>
-          <ul>
-            {pageLinks.map(({ id, text, url }, index) => {
-              return (
-                <Fade
-                  key={id}
-                  direction="down"
-                  duration={500}
-                  delay={index * 50}
-                  isDisabled={!isHome}
-                >
-                  <li>
-                    <Link to={url}>{text}</Link>
-                  </li>
-                </Fade>
-              )
-            })}
-          </ul>
-        </StyledLinks>
-
-        <Sidebar />
+        <div>
+          <StyledLinks>
+            <ul>
+              {pageLinks.map(({ id, text, url }, index) => {
+                return (
+                  <Fade
+                    key={id}
+                    direction="down"
+                    duration={500}
+                    delay={index * 50}
+                    isDisabled={!isHome}
+                  >
+                    <li>
+                      <Link to={url}>{text}</Link>
+                    </li>
+                  </Fade>
+                )
+              })}
+            </ul>
+          </StyledLinks>
+          <Fade isDisabled={!isHome}>
+            <Sidebar />
+          </Fade>
+        </div>
       </StyledNav>
     </StyledHeader>
   )
