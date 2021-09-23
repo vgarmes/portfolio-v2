@@ -100,7 +100,8 @@ const StyledLinks = styled.div`
 `
 
 const Navbar = ({ isHome }) => {
-  const [isMounted, setIsMounted] = useState(!isHome)
+  const [isMounted, setIsMounted] = useState(false)
+  const [triggerAnimation, setTriggerAnimation] = useState(!isHome)
   const scrollDirection = useScrollDirection("down")
   const [scrolledToTop, setScrolledToTop] = useState(true)
   const prefersReducedMotion = usePrefersReducedMotion()
@@ -114,8 +115,10 @@ const Navbar = ({ isHome }) => {
       return
     }
 
+    setIsMounted(true)
+
     const timeout = setTimeout(() => {
-      setIsMounted(true)
+      setTriggerAnimation(true)
     }, 100)
 
     window.addEventListener("scroll", handleScroll)
@@ -137,6 +140,11 @@ const Navbar = ({ isHome }) => {
       </Link>
     </div>
   )
+
+  if (!isMounted) {
+    return null
+  }
+
   return (
     <StyledHeader
       scrollDirection={scrollDirection}
@@ -162,7 +170,7 @@ const Navbar = ({ isHome }) => {
         ) : (
           <>
             <TransitionGroup component={null}>
-              {isMounted && (
+              {triggerAnimation && (
                 <CSSTransition classNames={fadeClass} timeout={timeout}>
                   {Logo}
                 </CSSTransition>
@@ -172,7 +180,7 @@ const Navbar = ({ isHome }) => {
             <StyledLinks>
               <ul>
                 <TransitionGroup component={null}>
-                  {isMounted &&
+                  {triggerAnimation &&
                     pageLinks.map(({ id, url, text }) => (
                       <CSSTransition
                         key={id}
@@ -199,30 +207,5 @@ const Navbar = ({ isHome }) => {
     </StyledHeader>
   )
 }
-
-/* <nav className="navbar">
-          <div className="nav-center">
-            <div className="nav-header">
-              <img src={logo} alt="logo" />
-              <button
-                type="button"
-                className="toggle-btn"
-                onClick={toggleSidebar}
-              >
-                <FaAlignRight />
-              </button>
-            </div>
-            <div className="nav-links">
-              {pageLinks.map(link => {
-                return (
-                  <Link key={link.id} to={link.url}>
-                    {link.text}
-                  </Link>
-                )
-              })}
-            </div>
-          </div>
-        </nav>
-        */
 
 export default Navbar
