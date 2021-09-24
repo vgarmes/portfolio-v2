@@ -126,7 +126,7 @@ const About = () => {
 
   return (
     <section id="about" ref={containerRef}>
-      <Title title="About me" />
+      <Title title="About Me" />
       <StyledAboutContainer>
         <div className="about-text-container">
           <div>
