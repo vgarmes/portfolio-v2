@@ -5,11 +5,12 @@ import navLinks from "../constants/links"
 import { Link } from "gatsby"
 import useOnClickOutside from "../hooks/useOnClickOutside"
 
+// transition is active when page is resized
 const StyledMenu = styled.div`
-  display: none;
-
+  opacity: 0;
+  transition: var(--transition);
   @media (max-width: 768px) {
-    display: block;
+    opacity: 1;
   }
 `
 

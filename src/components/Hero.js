@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 import socialLinks from "../constants/social_links"
 import useHasMounted from "../hooks/useHasMounted"
-import Fade from "./Fade"
+import FadeIn from "./FadeIn"
 
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -103,9 +103,9 @@ const Hero = () => {
   return (
     <StyledHeroSection>
       {items.map((item, i) => (
-        <Fade key={i} direction="up" duration={1000} delay={i * 100}>
+        <FadeIn key={i} direction="up" duration={1000} delay={i * 100}>
           {item}
-        </Fade>
+        </FadeIn>
       ))}
     </StyledHeroSection>
   )

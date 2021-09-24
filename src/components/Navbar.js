@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 import useHasMounted from "../hooks/useHasMounted"
 import useScrollDirection from "../hooks/useScrollDirection"
 import Sidebar from "./Sidebar"
-import Fade from "./Fade"
+import FadeIn from "./FadeIn"
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -68,11 +68,15 @@ const StyledNav = styled.nav`
     }
   }
 `
-
+/* Media query is down to the <a> element so FadeIn is the parent component 
+and thus fade in animations will take effect only on first load.
+On window resize, the opacity transition in the main component will take effect. */
 const StyledLinks = styled.div`
   ${({ theme }) => theme.mixins.flexEnd};
+  opacity: 1;
+  transition: var(--transition);
   @media (max-width: 768px) {
-    display: none;
+    opacity: 0;
   }
   ul {
     ${({ theme }) => theme.mixins.flexBetween};
@@ -86,6 +90,9 @@ const StyledLinks = styled.div`
       font-size: var(--fz-md);
       letter-spacing: 0.2em;
       a {
+        @media (max-width: 768px) {
+          display: none;
+        }
         text-transform: capitalize;
         padding: 10px;
       }
@@ -131,30 +138,29 @@ const Navbar = ({ isHome }) => {
       scrolledToTop={scrolledToTop}
     >
       <StyledNav>
-        <Fade isDisabled={!isHome}>{Logo}</Fade>
+        <FadeIn isDisabled={!isHome}>{Logo}</FadeIn>
         <div>
           <StyledLinks>
             <ul>
               {pageLinks.map(({ id, text, url }, index) => {
                 return (
-                  <Fade
-                    key={id}
-                    direction="down"
-                    duration={500}
-                    delay={index * 50}
-                    isDisabled={!isHome}
-                  >
-                    <li>
+                  <li key={id}>
+                    <FadeIn
+                      direction="down"
+                      duration={500}
+                      delay={index * 50}
+                      isDisabled={!isHome}
+                    >
                       <Link to={url}>{text}</Link>
-                    </li>
-                  </Fade>
+                    </FadeIn>
+                  </li>
                 )
               })}
             </ul>
           </StyledLinks>
-          <Fade isDisabled={!isHome}>
+          <FadeIn isDisabled={!isHome}>
             <Sidebar />
-          </Fade>
+          </FadeIn>
         </div>
       </StyledNav>
     </StyledHeader>

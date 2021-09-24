@@ -39,7 +39,7 @@ const Wrapper = styled.div`
   }
 `
 
-const Fade = ({
+const FadeIn = ({
   direction = "in",
   duration = 300,
   delay = 0,
@@ -66,4 +66,4 @@ const Fade = ({
   )
 }
 
-export default Fade
+export default FadeIn
