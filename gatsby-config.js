@@ -14,6 +14,7 @@ module.exports = {
     twitterUsername: `@vgmestre`,
     image: ``,
   },
+  pathPrefix: "/portfolio", // prefix to add to links when building for Github Pages
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
