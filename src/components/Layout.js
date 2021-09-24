@@ -1,9 +1,25 @@
 import React, { useEffect } from "react"
 import Navbar from "./Navbar"
 import Footer from "./Footer"
+import { useStaticQuery, graphql } from "gatsby"
 
 const Layout = ({ children, location }) => {
-  const isHome = location.pathname === "/"
+  const {
+    allSite: {
+      nodes: [{ pathPrefix }],
+    },
+  } = useStaticQuery(graphql`
+    {
+      allSite {
+        nodes {
+          pathPrefix
+        }
+      }
+    }
+  `)
+  // if there is a pathPrefix in gatsby-config, the home page of built site will end with this prefix
+  const isHome =
+    location.pathname === "/" || location.pathname === `${pathPrefix}/`
 
   // Sets target="_blank" rel="noopener noreferrer" on external links
   const handleExternalLinks = () => {
