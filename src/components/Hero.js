@@ -31,7 +31,7 @@ const StyledHeroSection = styled.section`
 
   .big-heading {
     margin: 0;
-    font-size: clamp(40px, 8vw, 80px);
+    font-size: clamp(40px, 7vw, 60px);
   }
 
   .subtitle {
@@ -67,13 +67,14 @@ const Hero = () => {
   const hasMounted = useHasMounted()
 
   const textContent = (
-    <>
-      <h2>Hi, my name is</h2>
-      <h1 className="big-heading">Victor Garcia.</h1>
-      <h2 className="subtitle">
-        <span>I am a </span>web developer
-      </h2>
-    </>
+    <h1 className="big-heading">
+      <span>
+        Hi there, I'm Victor. <br />
+      </span>
+      <span>
+        Front End Developer. <br />
+      </span>
+    </h1>
   )
 
   const contactButton = (

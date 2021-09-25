@@ -99,7 +99,6 @@ const GlobalStyle = createGlobalStyle`
   h4,
   h5,
   h6 {
-    font-family: var(--ff-secondary);
     letter-spacing: var(--spacing);
     line-height: 1.25;
     margin-bottom: 0.75rem;

@@ -19,11 +19,7 @@ import {
 } from "react-icons/si"
 
 const StyledAboutContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-
   .about-text-container {
-    width: 60%;
     text-align: center;
   }
   .skills-list {
@@ -74,11 +70,10 @@ const StyledAboutContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: flex-start; /*fixes bug that stretches picture on safari browsers*/
-    width: 40%;
     border-radius: var(--radius);
   }
   .about-img {
-    width: 60%;
+    width: 40%;
     border-radius: var(--radius);
   }
 
@@ -129,34 +124,38 @@ const About = () => {
       <Title title="About Me" />
       <StyledAboutContainer>
         <div className="about-text-container">
-          <div>
-            <p>
-              Hello! My name is Victor. I am a multi-disciplinary engineer whose
-              interest in web development started a few years ago when I was
-              involved in the back-end development of a monitoring app at my old
-              job.
-            </p>
-            <p>
-              After that experience, I decided I wanted to learn more about web
-              development so I started an online course on full stack
-              development in Ruby on Rails. Ever since then, I have been
-              constantly learning and developing my personal projects. Some
-              technologies I've been working with are:
-            </p>
-          </div>
-          <ul className="skills-list">
-            {icons.map(({ name, icon }, index) => (
-              <li key={index}>
-                {React.cloneElement(icon, {
-                  key: index,
-                  size: "1.5em",
-                })}
-                <span>{name}</span>
-              </li>
-            ))}
-          </ul>
+          <p>
+            Hello! My name is Victor. I am a multi-disciplinary engineer whose
+            interest in web development started a few years ago when I was
+            involved in the back-end development of a monitoring app at my old
+            job.
+          </p>
+          <p>
+            After that experience, I decided I wanted to learn more about web
+            development so I started an online course on full stack development
+            in Ruby on Rails. Ever since then, I have been constantly learning
+            and developing my personal projects. Some technologies I've been
+            working with are:
+          </p>
         </div>
-        <div className="about-img-container">
+        <ul className="skills-list">
+          {icons.map(({ name, icon }, index) => (
+            <li key={index}>
+              {React.cloneElement(icon, {
+                key: index,
+                size: "1.5em",
+              })}
+              <span>{name}</span>
+            </li>
+          ))}
+        </ul>
+      </StyledAboutContainer>
+    </section>
+  )
+}
+
+/*
+<div className="about-img-container">
           <StaticImage
             className="about-img"
             placeholder="blurred"
@@ -164,9 +163,6 @@ const About = () => {
             alt="profile picture"
           />
         </div>
-      </StyledAboutContainer>
-    </section>
-  )
-}
+        */
 
 export default About

@@ -45,7 +45,7 @@ const mixins = {
     -webkit-transition: var(--transition);
     transition: var(--transition);
     font-size: 0.875rem;
-    font-family: var(--ff-secondary);
+    font-family: var(--ff-primary);
     border: 2px solid transparent;
     cursor: pointer;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);

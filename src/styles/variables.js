@@ -33,7 +33,7 @@ const variables = css`
     --clr-red-light: hsl(360, 71%, 66%);
     --clr-white: #fff;
 
-    --ff-primary: "Poppins", sans-serif;
+    --ff-primary: "Mulish", sans-serif;
     --ff-secondary: "DM Serif Text", "Roboto", sans-serif;
     --fz-xxs: 12px;
     --fz-xs: 13px;
