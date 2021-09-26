@@ -5,18 +5,8 @@ import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion"
 import sr from "../utils/sr"
 import { srConfig } from "../utils"
 import Title from "./Title"
-import {
-  SiHtml5,
-  SiCss3,
-  SiJavascript,
-  SiReact,
-  SiGatsby,
-  SiNodeDotJs,
-  SiRuby,
-  SiRails,
-  SiMongodb,
-  SiPostgresql,
-} from "react-icons/si"
+import StackIcon from "./StackIcon"
+import stackIcons from "../constants/stack-icons"
 
 const StyledAboutContainer = styled.div`
   .about-text-container {
@@ -36,36 +26,6 @@ const StyledAboutContainer = styled.div`
     color: var(--clr-grey-9);
   }
 
-  .skills-list li span {
-    visibility: hidden;
-    width: 120px;
-    background-color: var(--clr-grey-9);
-    color: var(--clr-grey-1);
-    text-align: center;
-    border-radius: var(--radius);
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -60px;
-  }
-
-  .skills-list li span::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: var(--clr-grey-9) transparent transparent transparent;
-  }
-
-  .skills-list li:hover span {
-    visibility: visible;
-  }
-
   .about-img-container {
     display: flex;
     justify-content: center;
@@ -76,40 +36,12 @@ const StyledAboutContainer = styled.div`
     width: 40%;
     border-radius: var(--radius);
   }
-
-  @media only screen and (max-width: 600px) {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: flex-start;
-
-    .about-text-container {
-      width: 100%;
-    }
-    .about-img-container {
-      width: 100%;
-      margin-top: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-  }
 `
 
 const About = () => {
   const titleRef = useRef(null)
   const containerRef = useRef(null)
   const prefersReducedMotion = usePrefersReducedMotion()
-
-  const icons = [
-    { name: "HTML5", icon: <SiHtml5 /> },
-    { name: "CSS3", icon: <SiCss3 /> },
-    { name: "JavaScript", icon: <SiJavascript /> },
-    { name: "React", icon: <SiReact /> },
-    { name: "Gatsby", icon: <SiGatsby /> },
-    { name: "Node JS", icon: <SiNodeDotJs /> },
-    { name: "Ruby", icon: <SiRuby /> },
-    { name: "Rails", icon: <SiRails /> },
-    { name: "MongoDB", icon: <SiMongodb /> },
-    { name: "PostgreSQL", icon: <SiPostgresql /> },
-  ]
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -134,18 +66,14 @@ const About = () => {
             After that experience, I decided I wanted to learn more about web
             development so I started an online course on full stack development
             in Ruby on Rails. Ever since then, I have been constantly learning
-            and developing my personal projects. Some technologies I've been
-            working with are:
+            and developing my personal projects.
           </p>
+          <p>Some technologies I've been working with are:</p>
         </div>
         <ul className="skills-list">
-          {icons.map(({ name, icon }, index) => (
+          {stackIcons.map((item, index) => (
             <li key={index}>
-              {React.cloneElement(icon, {
-                key: index,
-                size: "1.5em",
-              })}
-              <span>{name}</span>
+              <StackIcon {...item} />
             </li>
           ))}
         </ul>
