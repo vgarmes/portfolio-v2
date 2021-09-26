@@ -36,8 +36,8 @@ const mixins = {
   `,
   bigButton: css`
     text-transform: uppercase;
-    color: var(--clr-primary-1);
-    background: var(--clr-primary-4);
+    color: var(--color-background);
+    background: var(--color-primary);
     padding: 1rem;
     letter-spacing: var(--spacing);
     display: inline-block;
@@ -53,7 +53,8 @@ const mixins = {
     &:hover,
     &:focus,
     &:active {
-      background: var(--clr-primary-4-lightest);
+      background: var(--color-primary-light);
+      color: var(--color-text);
       outline: none;
     }
     &:after {
