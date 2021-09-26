@@ -89,7 +89,7 @@ const GlobalStyle = createGlobalStyle`
 
     &:hover,
     &:focus {
-      color: var(--clr-primary-4);
+      color: var(--color-primary);
     }
   }
 
@@ -135,7 +135,7 @@ const GlobalStyle = createGlobalStyle`
     width: 5rem;
     height: 0.25rem;
     margin-bottom: 1.25rem;
-    background: var(--clr-primary-5);
+    background: var(--color-secondary);
     margin-left: auto;
     margin-right: auto;
   }
