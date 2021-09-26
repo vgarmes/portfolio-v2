@@ -61,6 +61,33 @@ const mixins = {
       display: none !important;
     }
   `,
+  bigButtonOutline: css`
+    text-transform: uppercase;
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    padding: 1rem;
+    letter-spacing: var(--spacing);
+    display: inline-block;
+    font-weight: 700;
+    -webkit-transition: var(--transition);
+    transition: var(--transition);
+    font-size: 0.875rem;
+    font-family: var(--ff-primary);
+    border: 1px solid var(--color-primary);
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius);
+    &:hover,
+    &:focus,
+    &:active {
+      background: var(--color-primary-light);
+      color: var(--color-text);
+      outline: none;
+    }
+    &:after {
+      display: none !important;
+    }
+  `,
 }
 
 export default mixins
