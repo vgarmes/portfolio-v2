@@ -34,21 +34,7 @@ const Layout = ({ children, location }) => {
     }
   }
 
-  // Scroll into view when url contains #section
   useEffect(() => {
-    /*if (location.hash) {
-      const id = location.hash.substring(1) // location.hash without the '#'
-
-      setTimeout(() => {
-        const el = document.getElementById(id)
-        console.log(el)
-        if (el) {
-          el.scrollIntoView()
-          el.focus()
-        }
-      }, 0)
-    }*/
-
     handleExternalLinks()
   }, [])
 
