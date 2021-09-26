@@ -1,32 +1,40 @@
 import React from "react"
-import { FiGithub, FiLinkedin, FiTwitter, FiInstagram } from "react-icons/fi"
-import { FaMediumM } from "react-icons/fa"
+import {
+  AiFillGithub,
+  AiFillLinkedin,
+  AiFillInstagram,
+  AiOutlineTwitter,
+  AiOutlineMedium,
+} from "react-icons/ai"
 
 const data = [
   {
     id: 1,
-    icon: <FiGithub className="social-icon"></FiGithub>,
-    url: "https://www.twitter.com",
+    icon: <AiFillGithub />,
+    url: "https://github.com/vgarmes",
   },
   {
     id: 2,
-    icon: <FiLinkedin className="social-icon"></FiLinkedin>,
-    url: "https://www.twitter.com",
+    icon: <AiFillLinkedin />,
+    url: "https://www.linkedin.com/in/vgmestre",
+    color: "#007bb6",
   },
   {
     id: 3,
-    icon: <FiTwitter className="social-icon"></FiTwitter>,
-    url: "https://www.twitter.com",
+    icon: <AiOutlineTwitter />,
+    url: "https://www.twitter.com/vgmestre",
+    color: "#00acee",
   },
   {
     id: 4,
-    icon: <FiInstagram className="social-icon"></FiInstagram>,
-    url: "https://www.twitter.com",
+    icon: <AiFillInstagram />,
+    url: "https://www.instagram.com/vgmestre",
+    color: "#dc297b",
   },
   {
     id: 5,
-    icon: <FaMediumM className="social-icon"></FaMediumM>,
-    url: "https://www.twitter.com",
+    icon: <AiOutlineMedium />,
+    url: "https://vgmestre.medium.com/",
   },
 ]
 
