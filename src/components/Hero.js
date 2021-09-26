@@ -34,6 +34,10 @@ const StyledHeroSection = styled.section`
     font-size: clamp(40px, 7vw, 60px);
   }
 
+  .decorative {
+    color: var(--color-decorative);
+  }
+
   .subtitle {
     margin-top: 1em;
   }
@@ -69,7 +73,7 @@ const Hero = () => {
   const textContent = (
     <h1 className="big-heading">
       <span>
-        Hi there, I'm Victor. <br />
+        Hi there, I'm <span className="decorative">Victor</span>. <br />
       </span>
       <span>
         Front End Developer. <br />
