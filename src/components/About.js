@@ -154,15 +154,4 @@ const About = () => {
   )
 }
 
-/*
-<div className="about-img-container">
-          <StaticImage
-            className="about-img"
-            placeholder="blurred"
-            src="../assets/images/profile.jpg"
-            alt="profile picture"
-          />
-        </div>
-        */
-
 export default About
