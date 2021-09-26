@@ -45,7 +45,7 @@ const StyledHamburgerButton = styled.button`
     height: 2px;
     border-radius: var(--border-radius);
     background-color: ${({ isOpen }) =>
-      isOpen ? `var(--clr-primary-4)` : `var(--clr-white)`};
+      isOpen ? `var(--color-secondary)` : `var(--color-text)`};
     transition-duration: 0.22s;
     transition-property: transform;
     transition-delay: ${props => (props.isOpen ? `0.12s` : `0s`)};
@@ -65,7 +65,7 @@ const StyledHamburgerButton = styled.button`
       height: 2px;
       border-radius: 4px;
       background-color: ${({ isOpen }) =>
-        isOpen ? `var(--clr-primary-4)` : `var(--clr-white)`};
+        isOpen ? `var(--color-secondary)` : `var(--color-text)`};
       transition-timing-function: ease;
       transition-duration: 0.15s;
       transition-property: transform;
@@ -99,7 +99,7 @@ const StyledSidebar = styled.aside`
     width: min(75vw, 400px);
     height: 100vh;
     outline: 0;
-    background-color: var(--clr-primary-1);
+    background-color: var(--color-background);
     box-shadow: -10px 0px 30px -15px black;
     z-index: 9;
     transform: translateX(${props => (props.isOpen ? 0 : 100)}vw);
@@ -110,7 +110,7 @@ const StyledSidebar = styled.aside`
     ${({ theme }) => theme.mixins.flexBetween};
     width: 100%;
     flex-direction: column;
-    color: var(--clr-white);
+    color: var(--color-text);
     font-family: var(--ff-primary);
     text-align: center;
   }
