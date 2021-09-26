@@ -60,8 +60,6 @@ const StyledHeader = styled.header`
   }
 `
 
-//box-shadow: 0 10px 30px -10px var(--shadow-color);
-
 const StyledNav = styled.nav`
   ${({ theme }) => theme.mixins.flexBetween};
   position: relative;
@@ -99,9 +97,8 @@ const StyledLinks = styled.div`
     li {
       margin: 0 5px;
       position: relative;
-      font-weight: 600;
+      font-weight: 700;
       font-size: var(--fz-md);
-      letter-spacing: 0.2em;
       a {
         @media (max-width: 768px) {
           display: none;
