@@ -9,7 +9,7 @@ const StyledContactSection = styled.section`
   text-align: center;
   max-width: 600px;
   .contact-btn {
-    ${({ theme }) => theme.mixins.bigButton};
+    ${({ theme }) => theme.mixins.bigButtonOutline};
     margin-top: 50px;
   }
 `
