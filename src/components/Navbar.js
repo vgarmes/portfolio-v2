@@ -8,6 +8,17 @@ import useScrollDirection from "../hooks/useScrollDirection"
 import Sidebar from "./Sidebar"
 import FadeIn from "./FadeIn"
 
+const navBarShadow = {
+  small: `
+    0.5px 1px 1px hsl(var(--shadow-color) / 0.7)
+  `,
+  medium: `
+    1px 2px 2px hsl(var(--shadow-color) / 0.333),
+    2px 4px 4px hsl(var(--shadow-color) / 0.333),
+    3px 6px 6px hsl(var(--shadow-color) / 0.333)
+  `,
+}
+
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
   position: fixed;
@@ -16,12 +27,13 @@ const StyledHeader = styled.header`
   padding: 0px 50px;
   width: 100%;
   height: var(--nav-height);
-  background-color: var(--clr-primary-1-trans);
+  background-color: var(--color-blurred-background);
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
   backdrop-filter: blur(10px);
   transition: var(--transition);
+  --shadow-color: 0deg 0% 50%;
   @media (max-width: 1080px) {
     padding: 0 40px;
   }
@@ -35,8 +47,7 @@ const StyledHeader = styled.header`
       css`
         height: var(--nav-scroll-height);
         transform: translateY(0px);
-        background-color: var(--clr-primary-1-trans);
-        box-shadow: 0 10px 30px -10px var(--clr-primary-1);
+        box-shadow: ${navBarShadow.medium};
       `};
     ${props =>
       props.scrollDirection === "down" &&
@@ -44,10 +55,12 @@ const StyledHeader = styled.header`
       css`
         height: var(--nav-scroll-height);
         transform: translateY(calc(var(--nav-scroll-height) * -1));
-        box-shadow: 0 10px 30px -10px black;
+        box-shadow: ${navBarShadow.small};
       `};
   }
 `
+
+//box-shadow: 0 10px 30px -10px var(--shadow-color);
 
 const StyledNav = styled.nav`
   ${({ theme }) => theme.mixins.flexBetween};
