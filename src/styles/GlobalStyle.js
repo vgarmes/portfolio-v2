@@ -103,6 +103,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.25;
     margin-bottom: 0.75rem;
     color: var(--color-gray-1000);
+    font-weight: 700;
   }
 
   p {
