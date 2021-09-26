@@ -39,7 +39,7 @@ const mixins = {
     color: var(--color-background);
     background: var(--color-primary);
     padding: 1rem;
-    letter-spacing: var(--spacing);
+    letter-spacing: var(--extra-spacing);
     display: inline-block;
     font-weight: 700;
     -webkit-transition: var(--transition);
@@ -66,7 +66,7 @@ const mixins = {
     background-color: var(--color-background);
     color: var(--color-primary);
     padding: 1rem;
-    letter-spacing: var(--spacing);
+    letter-spacing: var(--extra-spacing);
     display: inline-block;
     font-weight: 700;
     -webkit-transition: var(--transition);
