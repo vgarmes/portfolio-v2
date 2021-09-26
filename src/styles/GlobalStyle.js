@@ -24,8 +24,8 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: var(--clr-primary-1);
-    color: var(--clr-grey-9);
+    background-color: var(--color-background);
+    color: var(--color-text);
     font-family: var(--ff-primary);
     font-size: var(--fz-lg);
     line-height: 1.3;
@@ -102,7 +102,7 @@ const GlobalStyle = createGlobalStyle`
     letter-spacing: var(--spacing);
     line-height: 1.25;
     margin-bottom: 0.75rem;
-    color: var(--clr-white)
+    color: var(--color-gray-1000);
   }
 
   p {
