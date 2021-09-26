@@ -2,6 +2,24 @@ import { css } from "styled-components"
 
 const variables = css`
   :root {
+    --color-text: hsl(222deg, 22%, 5%);
+    --color-background: hsl(0deg, 0%, 100%);
+    --color-background-shadow: hsl(0deg, 0%, 50%);
+    --color-blurred-background: hsla(0deg, 0%, 100%, 0.85);
+    --color-primary: hsl(245deg, 100%, 60%);
+    --color-secondary: hsl(333deg, 100%, 45%);
+    --color-tertiary: hsl(255deg, 85%, 30%);
+    --color-decorative: hsl(200deg, 75%, 65%);
+    --color-gray-100: hsl(225deg, 25%, 95%);
+    --color-gray-200: hsl(225deg, 16%, 90%);
+    --color-gray-300: hsl(225deg, 8%, 80%);
+    --color-gray-400: hsl(225deg, 8%, 70%);
+    --color-gray-500: hsl(225deg, 7%, 60%);
+    --color-gray-600: hsl(225deg, 15%, 50%);
+    --color-gray-700: hsl(225deg, 12%, 40%);
+    --color-gray-900: hsl(225deg, 25%, 20%);
+    --color-gray-1000: hsl(225deg, 15%, 15%);
+
     /* primary colors */
     --clr-primary-1: #1c1d26;
     --clr-primary-2: #91b9b8;
@@ -33,7 +51,7 @@ const variables = css`
     --clr-red-light: hsl(360, 71%, 66%);
     --clr-white: #fff;
 
-    --ff-primary: "Mulish", sans-serif;
+    --ff-primary: "Mulish", -apple-system, sans-serif;
     --ff-secondary: "DM Serif Text", "Roboto", sans-serif;
     --fz-xxs: 12px;
     --fz-xs: 13px;
