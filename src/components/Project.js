@@ -20,12 +20,8 @@ const StyledProject = styled.article`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      to bottom right,
-      var(--clr-primary-5),
-      var(--clr-primary-1)
-    );
-    opacity: 0.85;
+    background-color: var(--clr-primary-1);
+    opacity: 0.5;
     transition: var(--transition);
   }
   &:hover {
