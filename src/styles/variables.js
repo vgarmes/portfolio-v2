@@ -7,6 +7,7 @@ const variables = css`
     --color-background-shadow: hsl(0deg, 0%, 50%);
     --color-blurred-background: hsla(0deg, 0%, 100%, 0.85);
     --color-primary: hsl(245deg, 100%, 60%);
+    --color-primary-light: hsl(245deg, 100%, 90%);
     --color-secondary: hsl(333deg, 100%, 45%);
     --color-tertiary: hsl(255deg, 85%, 30%);
     --color-decorative: hsl(200deg, 75%, 65%);
@@ -60,6 +61,7 @@ const variables = css`
     --fz-lg: 18px;
     --fz-xl: 20px;
     --fz-xxl: 22px;
+    --font-weight-medium: 400;
     --fz-heading: 32px;
     --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
     --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
