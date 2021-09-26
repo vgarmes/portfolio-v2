@@ -1,9 +1,10 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import socialLinks from "../constants/social_links"
 import useHasMounted from "../hooks/useHasMounted"
 import FadeIn from "./FadeIn"
+import SocialLink from "./SocialLink"
+import socialLinks from "../constants/social_links"
 
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -50,20 +51,9 @@ const StyledHeroSection = styled.section`
     margin-top: 50px;
   }
   .social-links {
-    margin-top: 3rem;
+    ${({ theme }) => theme.mixins.flexBetween};
     width: 15rem;
-    display: flex;
-    justify-content: space-between;
-  }
-  .social-link {
-    font-size: 1.25rem;
-    transition: var(--transition);
-    opacity: 0.85;
-  }
-  .social-link:hover {
-    opacity: 1;
-    transform: scale(1.2, 1.2);
-    color: var(--clr-white);
+    margin-top: 50px;
   }
 `
 
@@ -89,13 +79,9 @@ const Hero = () => {
 
   const social = (
     <div className="social-links">
-      {socialLinks.map(link => {
-        return (
-          <a href={link.url} key={link.id} className="social-link">
-            {link.icon}
-          </a>
-        )
-      })}
+      {socialLinks.map(link => (
+        <SocialLink key={link.id} {...link} />
+      ))}
     </div>
   )
 
