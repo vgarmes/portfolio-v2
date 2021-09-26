@@ -67,7 +67,8 @@ const variables = css`
     --fz-heading: 32px;
     --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
     --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-    --spacing: 0.2rem;
+    --spacing: 0.03em;
+    --extra-spacing: 0.2rem;
     --radius: 0.25rem;
     --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
