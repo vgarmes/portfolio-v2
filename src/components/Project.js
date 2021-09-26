@@ -78,14 +78,14 @@ const StyledProject = styled.article`
   .project-stack span,
   .about-stack span {
     display: inline-block;
-    background: var(--clr-grey-9);
-    color: var(--clr-grey-5);
+    background: var(--color-homepage-light);
+    color: var(--color-gray-1000);
     margin: 0.25rem;
     padding: 0.25rem 0.5rem;
     border-radius: var(--radius);
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 0.85rem;
+    font-size: var(--fz-sm);
   }
   .about-stack span {
     margin-top: 0.5rem;
