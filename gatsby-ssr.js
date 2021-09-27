@@ -1,34 +1,10 @@
-const React = require('react');
-const Layout = require('./src/components/Layout').default;
-const { ThemeProvider } = require('styled-components');
-const { ColorModeProvider } = require('./src/context/color-mode-context');
-const theme = require('./src/styles/theme').default;
-const GlobalStyle = require('./src/styles/GlobalStyle').default;
-const { COLORS } = require('./src/styles/index');
-
-/*
-This makes SSR render during a short time the site without any styles applied (flash of unstyled content):
-https://github.com/spences10/ama/issues/11
-
-exports.wrapRootElement = ({ element }) => {
-  return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      {element}
-    </ThemeProvider>
-  )
-}*/
-
-exports.wrapPageElement = ({ element, props }) => {
-  return (
-    <ThemeProvider theme={theme}>
-      <ColorModeProvider>
-        <GlobalStyle />
-        <Layout {...props}>{element}</Layout>{' '}
-      </ColorModeProvider>
-    </ThemeProvider>
-  );
-};
+import React from 'react';
+import Layout from './src/components/Layout';
+import { ThemeProvider } from 'styled-components';
+import { ColorModeProvider } from './src/context/color-mode-context';
+import theme from './src/styles/theme';
+import GlobalStyle from './src/styles/GlobalStyle';
+import { COLORS } from './src/styles/index';
 
 // Color Mode updating HTML
 const MagicScriptTag = () => {
@@ -83,7 +59,18 @@ const MagicScriptTag = () => {
 
 // Gatsby will run this function when generating our HTML
 // during the build process (onRenderBody is a Gatsby lifecycle method)
-exports.onRenderBody = ({ setPreBodyComponents }) => {
+export const onRenderBody = ({ setPreBodyComponents }) => {
   // injects React element above everything but within <body> tags
   setPreBodyComponents(<MagicScriptTag />);
+};
+
+export const wrapPageElement = ({ element, props }) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <ColorModeProvider>
+        <GlobalStyle />
+        <Layout {...props}>{element}</Layout>{' '}
+      </ColorModeProvider>
+    </ThemeProvider>
+  );
 };
