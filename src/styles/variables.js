@@ -2,11 +2,11 @@ import { css } from 'styled-components';
 
 const variables = css`
   :root {
-    --color-text: ${({ theme }) => theme.colors.light.text};
-    --color-background: ${({ theme }) => theme.colors.light.background};
+    --color-text: ${({ theme }) => theme.colors.text.light};
+    --color-background: ${({ theme }) => theme.colors.background.light};
     --color-background-shadow: hsl(0deg, 0%, 50%);
     --color-blurred-background: hsla(0deg, 0%, 100%, 0.85);
-    --color-primary: ${({ theme }) => theme.colors.light.primary};
+    --color-primary: ${({ theme }) => theme.colors.primary.light};
     --color-primary-light: hsl(245deg, 100%, 90%);
     --color-secondary: hsl(333deg, 100%, 45%);
     --color-tertiary: hsl(255deg, 85%, 30%);
