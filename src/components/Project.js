@@ -62,7 +62,7 @@ const StyledProject = styled.article`
     padding: 0.25rem 0.5rem;
     border-radius: var(--radius);
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: var(--extra-spacing);
     font-size: var(--fz-sm);
   }
   .about-stack span {
