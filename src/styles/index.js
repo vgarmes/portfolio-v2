@@ -1,13 +1,15 @@
 export const COLORS = {
-  light: {
-    text: 'hsl(222deg, 22%, 5%)',
-    background: 'hsl(0deg, 0%, 100%)',
-    primary: 'hsl(245deg, 100%, 60%)',
+  text: {
+    light: 'hsl(222deg, 22%, 5%)',
+    dark: 'white',
   },
-  dark: {
-    text: 'white',
-    background: 'black',
-    primary: 'blue',
+  background: {
+    light: 'hsl(0deg, 0%, 100%)',
+    dark: 'black',
+  },
+  primary: {
+    light: 'hsl(245deg, 100%, 60%)',
+    dark: 'blue',
   },
 };
 
