@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react"
-import styled, { css } from "styled-components"
-import logo from "../assets/images/android-chrome-192x192.png"
-import pageLinks from "../constants/links"
-import { Link } from "gatsby"
-import useHasMounted from "../hooks/useHasMounted"
-import useScrollDirection from "../hooks/useScrollDirection"
-import Sidebar from "./Sidebar"
-import FadeIn from "./FadeIn"
+import React, { useState, useEffect } from 'react';
+import styled, { css } from 'styled-components';
+import logo from '../assets/images/android-chrome-192x192.png';
+import pageLinks from '../constants/links';
+import { Link } from 'gatsby';
+import useHasMounted from '../hooks/useHasMounted';
+import useScrollDirection from '../hooks/useScrollDirection';
+import Sidebar from './Sidebar';
+import FadeIn from './FadeIn';
+import DarkToggle from './DarkToggle';
 
 const navBarShadow = {
   small: `
@@ -17,7 +18,7 @@ const navBarShadow = {
     2px 4px 4px hsl(var(--shadow-color) / 0.333),
     3px 6px 6px hsl(var(--shadow-color) / 0.333)
   `,
-}
+};
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -42,7 +43,7 @@ const StyledHeader = styled.header`
   }
   @media (prefers-reduced-motion: no-preference) {
     ${props =>
-      props.scrollDirection === "up" &&
+      props.scrollDirection === 'up' &&
       !props.scrolledToTop &&
       css`
         height: var(--nav-scroll-height);
@@ -50,7 +51,7 @@ const StyledHeader = styled.header`
         box-shadow: ${navBarShadow.medium};
       `};
     ${props =>
-      props.scrollDirection === "down" &&
+      props.scrollDirection === 'down' &&
       !props.scrolledToTop &&
       css`
         height: var(--nav-scroll-height);
@@ -58,7 +59,7 @@ const StyledHeader = styled.header`
         box-shadow: ${navBarShadow.small};
       `};
   }
-`
+`;
 
 const StyledNav = styled.nav`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -78,7 +79,7 @@ const StyledNav = styled.nav`
       }
     }
   }
-`
+`;
 /* Media query is down to the <a> element so FadeIn is the parent component 
 and thus fade in animations will take effect only on first load.
 On window resize, the opacity transition in the main component will take effect. */
@@ -113,22 +114,22 @@ const StyledLinks = styled.div`
     margin-left: 15px;
     font-size: var(--fz-xs);
   }
-`
+`;
 
 const Navbar = ({ isHome }) => {
-  const hasMounted = useHasMounted()
-  const scrollDirection = useScrollDirection("down")
-  const [scrolledToTop, setScrolledToTop] = useState(true)
+  const hasMounted = useHasMounted();
+  const scrollDirection = useScrollDirection('down');
+  const [scrolledToTop, setScrolledToTop] = useState(true);
 
   const handleScroll = () => {
-    setScrolledToTop(window.pageYOffset < 50)
-  }
+    setScrolledToTop(window.pageYOffset < 50);
+  };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener('scroll', handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const Logo = (
     <div className="logo">
@@ -136,10 +137,10 @@ const Navbar = ({ isHome }) => {
         <img src={logo} alt="logo" />
       </Link>
     </div>
-  )
+  );
 
   if (!hasMounted) {
-    return <StyledHeader />
+    return <StyledHeader />;
   }
 
   return (
@@ -149,6 +150,7 @@ const Navbar = ({ isHome }) => {
     >
       <StyledNav>
         <FadeIn isDisabled={!isHome}>{Logo}</FadeIn>
+        <DarkToggle />
         <div>
           <StyledLinks>
             <ul>
@@ -164,17 +166,18 @@ const Navbar = ({ isHome }) => {
                       <Link to={url}>{text}</Link>
                     </FadeIn>
                   </li>
-                )
+                );
               })}
             </ul>
           </StyledLinks>
+
           <FadeIn isDisabled={!isHome}>
             <Sidebar />
           </FadeIn>
         </div>
       </StyledNav>
     </StyledHeader>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
