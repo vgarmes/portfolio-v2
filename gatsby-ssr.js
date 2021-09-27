@@ -19,7 +19,6 @@ function setColorsByTheme() {
   const mql = window.matchMedia('(prefers-color-scheme: dark)');
   const prefersDarkFromMQ = mql.matches;
   const persistedPreference = localStorage.getItem(colorModeKey);
-  console.log(persistedPreference);
 
   let colorMode = 'light';
 
@@ -77,18 +76,14 @@ const FallbackStyles = () => {
     ''
   );
 
-  const wrappedInSelector = `html { ${cssVariableString}}`;
+  const wrappedInSelector = `html { ${cssVariableString} }`;
 
   return <style>{wrappedInSelector}</style>;
 };
 
-// Gatsby will run this function when generating our HTML
-// during the build process (onRenderBody is a Gatsby lifecycle method)
 export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {
   setHeadComponents(<FallbackStyles />);
-  // injects React element above everything but within <body> tags
-  // Keys just to prevent warning: Each child in a list should have a unique "key" prop.
-  setPreBodyComponents(<MagicScriptTag key="magic-script-tag" />);
+  setPreBodyComponents(<MagicScriptTag />);
 };
 
 export const wrapPageElement = ({ element, props }) => {
