@@ -4,64 +4,63 @@ import { ThemeProvider } from 'styled-components';
 import { ColorModeProvider } from './src/context/color-mode-context';
 import theme from './src/styles/theme';
 import GlobalStyle from './src/styles/GlobalStyle';
-import { COLORS } from './src/styles/index';
+import {
+  COLORS,
+  COLOR_MODE_KEY,
+  INITIAL_COLOR_MODE_CSS_PROP,
+} from './src/styles';
 
-// Color Mode updating HTML
+// Dark Mode needs to update HTML during SSR
+function setColorsByTheme() {
+  const colors = 'dummyColors';
+  const colorModeKey = 'dummyColorModeKey';
+  const colorModeCssProp = 'dummyColorModeCssProp';
+
+  const mql = window.matchMedia('(prefers-color-scheme: dark)');
+  const prefersDarkFromMQ = mql.matches;
+  const persistedPreference = localStorage.getItem(colorModeKey);
+  console.log(persistedPreference);
+
+  let colorMode = 'light';
+
+  const hasUsedToggle = typeof persistedPreference === 'string';
+
+  if (hasUsedToggle) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = prefersDarkFromMQ ? 'dark' : 'light';
+  }
+
+  let root = document.documentElement;
+
+  root.style.setProperty(colorModeCssProp, colorMode);
+
+  Object.entries(colors).forEach(([name, colorByTheme]) => {
+    const cssVarName = `--color-${name}`;
+
+    root.style.setProperty(cssVarName, colorByTheme[colorMode]);
+  });
+}
 const MagicScriptTag = () => {
-  const codeToRunOnClient = `
-  (function() {
-    function getInitialColorMode() {
-      const persistedColorPreference = window.localStorage.getItem('color-mode');
-      const hasPersistedPreference = typeof persistedColorPreference === 'string';
-      if (hasPersistedPreference) {
-        return persistedColorPreference;
-      }
-      const mql = window.matchMedia('(prefers-color-scheme: dark)');
-      const hasMediaQueryPreference = typeof mql.matches === 'boolean';
+  const boundFn = String(setColorsByTheme)
+    .replace("'dummyColors'", JSON.stringify(COLORS))
+    .replace('dummyColorModeKey', COLOR_MODE_KEY)
+    .replace('dummyColorModeCssProp', INITIAL_COLOR_MODE_CSS_PROP);
 
-      if (hasMediaQueryPreference) {
-        return mql.matches ? 'dark' : 'light';
-      }
-      return 'light';
-    }
+  const calledFunction = `(${boundFn})()`;
 
-    const colorMode = getInitialColorMode();
-
-    const root = document.documentElement;
-
-    root.style.setProperty(
-      '--color-text',
-      colorMode === 'light'
-        ? '${COLORS.light.text}'
-        : '${COLORS.dark.text}'
-    );
-    root.style.setProperty(
-      '--color-background',
-      colorMode === 'light'
-        ? '${COLORS.light.background}'
-        : '${COLORS.dark.background}'
-    );
-    root.style.setProperty(
-      '--color-primary',
-      colorMode === 'light'
-        ? '${COLORS.light.primary}'
-        : '${COLORS.dark.primary}'
-    );
-
-    root.style.setProperty('--initial-color-mode', colorMode);
-  })()`;
+  // minify calledFunction here if needed
 
   // eslint-disable-next-line react/no-danger
-  return <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />;
-  // this is injected at compile-time, so there is no danger
-  // that users slip malicious code into it
+  return <script dangerouslySetInnerHTML={{ __html: calledFunction }} />;
 };
 
 // Gatsby will run this function when generating our HTML
 // during the build process (onRenderBody is a Gatsby lifecycle method)
 export const onRenderBody = ({ setPreBodyComponents }) => {
   // injects React element above everything but within <body> tags
-  setPreBodyComponents(<MagicScriptTag />);
+  // Keys just to prevent warning: Each child in a list should have a unique "key" prop.
+  setPreBodyComponents(<MagicScriptTag key="magic-script-tag" />);
 };
 
 export const wrapPageElement = ({ element, props }) => {
