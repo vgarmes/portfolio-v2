@@ -55,9 +55,37 @@ const MagicScriptTag = () => {
   return <script dangerouslySetInnerHTML={{ __html: calledFunction }} />;
 };
 
+/**
+ * If the user has JS disabled, the injected script will never fire!
+ * This means that they won't have any colors set, everything will be default
+ * black and white.
+ * We can solve for this by injecting a `<style>` tag into the head of the
+ * document, which sets default values for all of our colors.
+ * Only light mode will be available for users with JS disabled.
+ */
+const FallbackStyles = () => {
+  // Create a string holding each CSS variable:
+  /*
+    `--color-text: black;
+    --color-background: white;`
+  */
+
+  const cssVariableString = Object.entries(COLORS).reduce(
+    (acc, [name, colorByTheme]) => {
+      return `${acc}\n--color-${name}: ${colorByTheme.light};`;
+    },
+    ''
+  );
+
+  const wrappedInSelector = `html { ${cssVariableString}}`;
+
+  return <style>{wrappedInSelector}</style>;
+};
+
 // Gatsby will run this function when generating our HTML
 // during the build process (onRenderBody is a Gatsby lifecycle method)
-export const onRenderBody = ({ setPreBodyComponents }) => {
+export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {
+  setHeadComponents(<FallbackStyles />);
   // injects React element above everything but within <body> tags
   // Keys just to prevent warning: Each child in a list should have a unique "key" prop.
   setPreBodyComponents(<MagicScriptTag key="magic-script-tag" />);
