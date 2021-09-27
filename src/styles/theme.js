@@ -1,4 +1,5 @@
-import mixins from "./mixins"
+import mixins from './mixins';
+import { COLORS } from './';
 
 const theme = {
   breakpoints: {
@@ -29,7 +30,8 @@ const theme = {
     16px 32px 32px hsl(var(--shadow-color) / 0.2)
   `,
   },
+  colors: COLORS,
   mixins,
-}
+};
 
-export default theme
+export default theme;

@@ -1,12 +1,12 @@
-import { css } from "styled-components"
+import { css } from 'styled-components';
 
 const variables = css`
   :root {
-    --color-text: hsl(222deg, 22%, 5%);
-    --color-background: hsl(0deg, 0%, 100%);
+    --color-text: ${({ theme }) => theme.colors.light.text};
+    --color-background: ${({ theme }) => theme.colors.light.background};
     --color-background-shadow: hsl(0deg, 0%, 50%);
     --color-blurred-background: hsla(0deg, 0%, 100%, 0.85);
-    --color-primary: hsl(245deg, 100%, 60%);
+    --color-primary: ${({ theme }) => theme.colors.light.primary};
     --color-primary-light: hsl(245deg, 100%, 90%);
     --color-secondary: hsl(333deg, 100%, 45%);
     --color-tertiary: hsl(255deg, 85%, 30%);
@@ -54,8 +54,8 @@ const variables = css`
     --clr-red-light: hsl(360, 71%, 66%);
     --clr-white: #fff;
 
-    --ff-primary: "Mulish", -apple-system, sans-serif;
-    --ff-secondary: "DM Serif Text", "Roboto", sans-serif;
+    --ff-primary: 'Mulish', -apple-system, sans-serif;
+    --ff-secondary: 'DM Serif Text', 'Roboto', sans-serif;
     --fz-xxs: 12px;
     --fz-xs: 13px;
     --fz-sm: 14px;
@@ -86,7 +86,7 @@ const variables = css`
     --ham-after-active: bottom 0.1s ease-out,
       transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
   }
-`
+`;
 // --transition: all 0.3s linear;
 
-export default variables
+export default variables;
