@@ -13,28 +13,6 @@ const StyledProject = styled.article`
     height: 19rem;
     z-index: 1;
   }
-  .project-img::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--clr-primary-1);
-    opacity: 0.5;
-    transition: var(--transition);
-  }
-  &:hover {
-    .project-img::after {
-      opacity: 0;
-    }
-  }
-
-  @media screen and (max-width: 991px) {
-    .project-img::after {
-      display: none;
-    }
-  }
 
   .project-info {
     background: var(--clr-white);
