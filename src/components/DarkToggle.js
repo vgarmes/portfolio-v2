@@ -3,6 +3,11 @@ import { ColorModeContext } from '../context/color-mode-context';
 
 const DarkToggle = () => {
   const { colorMode, setColorMode } = React.useContext(ColorModeContext);
+
+  if (!colorMode) {
+    return null;
+  }
+
   return (
     <label>
       <input
