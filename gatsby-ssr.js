@@ -1,7 +1,6 @@
 import React from 'react';
 import Layout from './src/components/Layout';
 import { ThemeProvider } from 'styled-components';
-import { ColorModeProvider } from './src/context/color-mode-context';
 import theme from './src/styles/theme';
 import GlobalStyle from './src/styles/GlobalStyle';
 import {
@@ -89,10 +88,8 @@ export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {
 export const wrapPageElement = ({ element, props }) => {
   return (
     <ThemeProvider theme={theme}>
-      <ColorModeProvider>
-        <GlobalStyle />
-        <Layout {...props}>{element}</Layout>{' '}
-      </ColorModeProvider>
+      <GlobalStyle />
+      <Layout {...props}>{element}</Layout>{' '}
     </ThemeProvider>
   );
 };
