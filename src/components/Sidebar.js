@@ -1,9 +1,10 @@
-import React, { useState, useRef, useEffect } from "react"
-import { Helmet } from "react-helmet"
-import styled from "styled-components"
-import navLinks from "../constants/links"
-import { Link } from "gatsby"
-import useOnClickOutside from "../hooks/useOnClickOutside"
+import React, { useState, useRef, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
+import styled from 'styled-components';
+import navLinks from '../constants/links';
+import { Link } from 'gatsby';
+import useOnClickOutside from '../hooks/useOnClickOutside';
+import DarkToggle from './DarkToggle';
 
 // transition is active when page is resized
 const StyledMenu = styled.div`
@@ -12,7 +13,7 @@ const StyledMenu = styled.div`
   @media (max-width: 768px) {
     opacity: 1;
   }
-`
+`;
 
 const StyledHamburgerButton = styled.button`
   display: none;
@@ -56,7 +57,7 @@ const StyledHamburgerButton = styled.button`
     );
     &:before,
     &:after {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       left: auto;
@@ -75,27 +76,29 @@ const StyledHamburgerButton = styled.button`
       top: ${props => (props.isOpen ? `0` : `-10px`)};
       opacity: ${props => (props.isOpen ? 0 : 1)};
       transition: ${({ isOpen }) =>
-        isOpen ? "var(--ham-before-active)" : "var(--ham-before)"};
+        isOpen ? 'var(--ham-before-active)' : 'var(--ham-before)'};
     }
     &:after {
       width: ${props => (props.isOpen ? `100%` : `80%`)};
       bottom: ${props => (props.isOpen ? `0` : `-10px`)};
       transform: rotate(${props => (props.isOpen ? `-90deg` : `0`)});
       transition: ${({ isOpen }) =>
-        isOpen ? "var(--ham-after-active)" : "var(--ham-after)"};
+        isOpen ? 'var(--ham-after-active)' : 'var(--ham-after)'};
     }
   }
-`
+`;
 
 const StyledSidebar = styled.aside`
   display: none;
   @media (max-width: 768px) {
-    ${({ theme }) => theme.mixins.flexCenter};
+    ${({ theme }) => theme.mixins.flexBetween};
+    align-items: flex-start;
+    flex-direction: column;
     position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
-    padding: 50px 10px;
+    padding: 50px 30px;
     width: min(75vw, 400px);
     height: 100vh;
     outline: 0;
@@ -103,16 +106,16 @@ const StyledSidebar = styled.aside`
     box-shadow: -10px 0px 30px -15px black;
     z-index: 9;
     transform: translateX(${props => (props.isOpen ? 0 : 100)}vw);
-    visibility: ${props => (props.isOpen ? "visible" : "hidden")};
+    visibility: ${props => (props.isOpen ? 'visible' : 'hidden')};
     transition: var(--transition);
   }
   nav {
     ${({ theme }) => theme.mixins.flexBetween};
-    width: 100%;
     flex-direction: column;
+    width: 100%;
+    margin-top: var(--nav-height);
     color: var(--color-text);
     font-family: var(--ff-primary);
-    text-align: center;
   }
   ul {
     padding: 0;
@@ -122,7 +125,8 @@ const StyledSidebar = styled.aside`
     li {
       position: relative;
       margin: 0 auto 20px;
-      font-size: clamp(var(--fz-sm), 4vw, var(--fz-xxl));
+      font-size: var(--fz-xxl);
+      font-weight: var(--font-weight-semibold);
       @media (max-width: 600px) {
         margin: 0 auto 10px;
       }
@@ -131,7 +135,7 @@ const StyledSidebar = styled.aside`
       ${({ theme }) => theme.mixins.link};
       text-transform: capitalize;
       width: 100%;
-      padding: 3px 20px 20px;
+      padding-bottom: 20px;
     }
   }
   .resume-link {
@@ -140,36 +144,36 @@ const StyledSidebar = styled.aside`
     margin: 10% auto 0;
     width: max-content;
   }
-`
+`;
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleSidebar = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
 
   const onResize = e => {
     if (e.currentTarget.innerWidth > 768) {
-      setIsOpen(false)
+      setIsOpen(false);
     }
-  }
+  };
 
   useEffect(() => {
-    window.addEventListener("resize", onResize)
+    window.addEventListener('resize', onResize);
     return () => {
-      window.removeEventListener("resize", onResize)
-    }
-  }, [])
+      window.removeEventListener('resize', onResize);
+    };
+  }, []);
 
   // close sidebar when clicking outside
-  const wrapperRef = useRef()
-  useOnClickOutside(wrapperRef, () => setIsOpen(false))
+  const wrapperRef = useRef();
+  useOnClickOutside(wrapperRef, () => setIsOpen(false));
 
   return (
     <StyledMenu>
       <Helmet>
-        <body className={isOpen ? "blur" : ""} />
+        <body className={isOpen ? 'blur' : ''} />
       </Helmet>
 
       <div ref={wrapperRef}>
@@ -195,10 +199,11 @@ const Sidebar = () => {
               ))}
             </ul>
           </nav>
+          <DarkToggle />
         </StyledSidebar>
       </div>
     </StyledMenu>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
