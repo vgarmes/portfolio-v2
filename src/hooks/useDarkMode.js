@@ -25,10 +25,10 @@ function useDarkMode() {
     localStorage.setItem(COLOR_MODE_KEY, newValue);
 
     // Update properties
-    Object.entries(COLORS).forEach(([name, colorByTheme]) => {
+    Object.entries(COLORS[newValue]).forEach(([name, themeColor]) => {
       const cssVarName = `--color-${name}`;
 
-      root.style.setProperty(cssVarName, colorByTheme[newValue]);
+      root.style.setProperty(cssVarName, themeColor);
     });
 
     // Update React color-mode state

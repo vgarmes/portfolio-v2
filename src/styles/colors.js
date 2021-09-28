@@ -1,19 +1,15 @@
 export const COLORS = {
-  text: {
-    light: 'hsl(222deg, 22%, 5%)',
-    dark: 'white',
+  light: {
+    text: 'hsl(222deg, 22%, 5%)',
+    background: 'hsl(0deg, 0%, 100%)',
+    'blurred-background': 'hsla(0deg, 0%, 100%, 0.85)',
+    primary: 'hsl(245deg, 100%, 60%)',
   },
-  background: {
-    light: 'hsl(0deg, 0%, 100%)',
-    dark: 'hsl(210deg, 30%, 8%)',
-  },
-  'blurred-background': {
-    light: 'hsla(0deg, 0%, 100%, 0.85)',
-    dark: 'hsla(210deg, 30%, 8%, 0.85)',
-  },
-  primary: {
-    light: 'hsl(245deg, 100%, 60%)',
-    dark: 'blue',
+  dark: {
+    text: 'white',
+    background: 'hsl(210deg, 30%, 8%)',
+    'blurred-background': 'hsla(210deg, 30%, 8%, 0.85)',
+    primary: 'blue',
   },
 };
 

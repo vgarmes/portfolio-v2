@@ -33,10 +33,10 @@ function setColorsByTheme() {
 
   root.style.setProperty(colorModeCssProp, colorMode);
 
-  Object.entries(colors).forEach(([name, colorByTheme]) => {
+  Object.entries(colors[colorMode]).forEach(([name, themeColor]) => {
     const cssVarName = `--color-${name}`;
 
-    root.style.setProperty(cssVarName, colorByTheme[colorMode]);
+    root.style.setProperty(cssVarName, themeColor);
   });
 }
 const MagicScriptTag = () => {
@@ -68,9 +68,9 @@ const FallbackStyles = () => {
     --color-background: white;`
   */
 
-  const cssVariableString = Object.entries(COLORS).reduce(
-    (acc, [name, colorByTheme]) => {
-      return `${acc}\n--color-${name}: ${colorByTheme.light};`;
+  const cssVariableString = Object.entries(COLORS.light).reduce(
+    (acc, [name, themeColor]) => {
+      return `${acc}\n--color-${name}: ${themeColor};`;
     },
     ''
   );
@@ -81,8 +81,8 @@ const FallbackStyles = () => {
 };
 
 export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {
-  setHeadComponents(<FallbackStyles />);
-  setPreBodyComponents(<MagicScriptTag />);
+  setHeadComponents(<FallbackStyles key="fallback-styles" />);
+  setPreBodyComponents(<MagicScriptTag key="magic-script-tag" />);
 };
 
 export const wrapPageElement = ({ element, props }) => {
