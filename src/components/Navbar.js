@@ -33,7 +33,7 @@ const StyledHeader = styled.header`
   pointer-events: auto !important;
   user-select: auto !important;
   backdrop-filter: blur(10px);
-  transition: var(--transition), background-color;
+  transition: padding var(--transition-effect);
   --shadow-color: 0deg 0% 50%;
   @media (max-width: 1080px) {
     padding: 0 40px;
@@ -79,6 +79,15 @@ const StyledNav = styled.nav`
       }
     }
   }
+  .control {
+    ${({ theme }) => theme.mixins.flexBetween};
+  }
+  .dark-toggle {
+    @media (max-width: 768px) {
+      display: none;
+    }
+    margin-left: 5rem;
+  }
 `;
 /* Media query is down to the <a> element so FadeIn is the parent component 
 and thus fade in animations will take effect only on first load.
@@ -86,7 +95,7 @@ On window resize, the opacity transition in the main component will take effect.
 const StyledLinks = styled.div`
   ${({ theme }) => theme.mixins.flexEnd};
   opacity: 1;
-  transition: var(--transition);
+  transition: opacity var(--transition-effect);
   @media (max-width: 768px) {
     opacity: 0;
   }
@@ -109,9 +118,7 @@ const StyledLinks = styled.div`
       }
     }
   }
-  .dark-toggle {
-    margin-left: 5rem;
-  }
+
   .resume-button {
     ${({ theme }) => theme.mixins.smallButton};
     margin-left: 15px;
@@ -154,7 +161,7 @@ const Navbar = ({ isHome }) => {
       <StyledNav>
         <FadeIn isDisabled={!isHome}>{Logo}</FadeIn>
 
-        <div>
+        <div className="control">
           <StyledLinks>
             <ul>
               {pageLinks.map(({ id, text, url }, index) => {
@@ -172,10 +179,11 @@ const Navbar = ({ isHome }) => {
                 );
               })}
             </ul>
-            <div className="dark-toggle">
-              <DarkToggle />
-            </div>
           </StyledLinks>
+
+          <div className="dark-toggle">
+            <DarkToggle />
+          </div>
 
           <FadeIn isDisabled={!isHome}>
             <Sidebar />
