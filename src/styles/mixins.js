@@ -1,4 +1,4 @@
-import { css } from "styled-components"
+import { css } from 'styled-components';
 
 const mixins = {
   flexBetween: css`
@@ -53,7 +53,7 @@ const mixins = {
     &:hover,
     &:focus,
     &:active {
-      background: var(--color-primary-light);
+      background: var(--color-primary);
       color: var(--color-text);
       outline: none;
     }
@@ -80,7 +80,7 @@ const mixins = {
     &:hover,
     &:focus,
     &:active {
-      background: var(--color-primary-light);
+      background: var(--color-primary);
       color: var(--color-text);
       outline: none;
     }
@@ -88,6 +88,6 @@ const mixins = {
       display: none !important;
     }
   `,
-}
+};
 
-export default mixins
+export default mixins;
