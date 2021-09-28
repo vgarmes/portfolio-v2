@@ -33,7 +33,7 @@ const StyledHeader = styled.header`
   pointer-events: auto !important;
   user-select: auto !important;
   backdrop-filter: blur(10px);
-  transition: var(--transition);
+  transition: var(--transition), background-color;
   --shadow-color: 0deg 0% 50%;
   @media (max-width: 1080px) {
     padding: 0 40px;
@@ -109,6 +109,9 @@ const StyledLinks = styled.div`
       }
     }
   }
+  .dark-toggle {
+    margin-left: 5rem;
+  }
   .resume-button {
     ${({ theme }) => theme.mixins.smallButton};
     margin-left: 15px;
@@ -150,7 +153,7 @@ const Navbar = ({ isHome }) => {
     >
       <StyledNav>
         <FadeIn isDisabled={!isHome}>{Logo}</FadeIn>
-        <DarkToggle />
+
         <div>
           <StyledLinks>
             <ul>
@@ -169,6 +172,9 @@ const Navbar = ({ isHome }) => {
                 );
               })}
             </ul>
+            <div className="dark-toggle">
+              <DarkToggle />
+            </div>
           </StyledLinks>
 
           <FadeIn isDisabled={!isHome}>
