@@ -30,7 +30,7 @@ const mixins = {
     &:hover,
     &:active,
     &:focus {
-      color: var(--clr-primary-4);
+      color: var(--color-primary);
       outline: 0;
     }
   `,
@@ -87,6 +87,16 @@ const mixins = {
     &:after {
       display: none !important;
     }
+  `,
+  iconButton: css`
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
   `,
 };
 
