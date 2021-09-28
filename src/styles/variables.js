@@ -3,23 +3,6 @@ import { css } from 'styled-components';
 const variables = css`
   :root {
     --color-background-shadow: hsl(0deg, 0%, 50%);
-    --color-blurred-background: hsla(0deg, 0%, 100%, 0.85);
-    --color-primary-light: hsl(245deg, 100%, 90%);
-    --color-secondary: hsl(333deg, 100%, 45%);
-    --color-tertiary: hsl(255deg, 85%, 30%);
-    --color-decorative: hsl(200deg, 75%, 65%);
-    --color-homepage-light: hsl(204deg, 67%, 85%);
-    --color-homepage-dark: hsl(202deg, 71%, 90%);
-    --color-gray-100: hsl(225deg, 25%, 95%);
-    --color-gray-200: hsl(225deg, 16%, 90%);
-    --color-gray-300: hsl(225deg, 8%, 80%);
-    --color-gray-400: hsl(225deg, 8%, 70%);
-    --color-gray-500: hsl(225deg, 7%, 60%);
-    --color-gray-600: hsl(225deg, 15%, 50%);
-    --color-gray-700: hsl(225deg, 12%, 40%);
-    --color-gray-900: hsl(225deg, 25%, 20%);
-    --color-gray-1000: hsl(225deg, 15%, 15%);
-
     /* primary colors */
     --clr-primary-1: #1c1d26;
     --clr-primary-2: #91b9b8;
