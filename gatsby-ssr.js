@@ -7,7 +7,7 @@ import {
   COLORS,
   COLOR_MODE_KEY,
   INITIAL_COLOR_MODE_CSS_PROP,
-} from './src/styles';
+} from './src/styles/colors';
 
 // Dark Mode needs to update HTML during SSR
 function setColorsByTheme() {
