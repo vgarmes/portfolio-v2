@@ -1,8 +1,8 @@
 import React from 'react';
-import { ColorModeContext } from '../context/color-mode-context';
+import useDarkMode from '../hooks/useDarkMode';
 
 const DarkToggle = () => {
-  const { colorMode, setColorMode } = React.useContext(ColorModeContext);
+  const [colorMode, setColorMode] = useDarkMode();
 
   if (!colorMode) {
     return null;
