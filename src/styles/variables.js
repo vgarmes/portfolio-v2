@@ -43,10 +43,14 @@ const variables = css`
     --fz-lg: 18px;
     --fz-xl: 20px;
     --fz-xxl: 22px;
-    --font-weight-medium: 400;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
     --fz-heading: 32px;
     --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
     --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    --transition-effect: 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
     --spacing: 0.03em;
     --extra-spacing: 0.2rem;
     --radius: 0.25rem;
