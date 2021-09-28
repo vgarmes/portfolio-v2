@@ -1,5 +1,9 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { COLORS, COLOR_MODE_KEY, INITIAL_COLOR_MODE_CSS_PROP } from '../styles';
+import { useState, useEffect } from 'react';
+import {
+  COLORS,
+  COLOR_MODE_KEY,
+  INITIAL_COLOR_MODE_CSS_PROP,
+} from '../styles/colors';
 
 function useDarkMode() {
   const [colorMode, rawSetColorMode] = useState(undefined);
