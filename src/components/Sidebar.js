@@ -98,8 +98,8 @@ const StyledSidebar = styled.aside`
     top: 0;
     bottom: 0;
     right: 0;
-    padding: 50px 30px;
-    width: min(75vw, 400px);
+    padding: var(--nav-height) 30px;
+    width: min(100%, 300px);
     height: 100vh;
     outline: 0;
     background-color: var(--color-background);
@@ -113,7 +113,6 @@ const StyledSidebar = styled.aside`
     ${({ theme }) => theme.mixins.flexBetween};
     flex-direction: column;
     width: 100%;
-    margin-top: var(--nav-height);
     color: var(--color-text);
     font-family: var(--ff-primary);
   }
@@ -138,6 +137,7 @@ const StyledSidebar = styled.aside`
       padding-bottom: 20px;
     }
   }
+
   .resume-link {
     ${({ theme }) => theme.mixins.bigButton};
     padding: 18px 50px;
@@ -199,6 +199,7 @@ const Sidebar = () => {
               ))}
             </ul>
           </nav>
+
           <DarkToggle />
         </StyledSidebar>
       </div>
