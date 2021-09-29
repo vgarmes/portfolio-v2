@@ -1,5 +1,5 @@
-import React from "react"
-import styled, { keyframes } from "styled-components"
+import React from 'react';
+import styled, { keyframes } from 'styled-components';
 
 const animations = {
   in: keyframes`
@@ -30,17 +30,19 @@ const animations = {
     opacity: 1;
   }
 `,
-}
+};
 
 const Wrapper = styled.div`
   @media (prefers-reduced-motion: no-preference) {
-    animation-name: ${({ direction }) => animations[direction]};
+    animation-name: ${({ name }) => animations[name]};
+    animation-direction: ${({ direction }) => direction};
     animation-fill-mode: backwards;
   }
-`
+`;
 
 const FadeIn = ({
-  direction = "in",
+  name = 'in',
+  direction = 'normal',
   duration = 300,
   delay = 0,
   isDisabled = false,
@@ -48,12 +50,13 @@ const FadeIn = ({
   ...delegated
 }) => {
   if (isDisabled) {
-    return React.cloneElement(children, { ...delegated })
+    return React.cloneElement(children, { ...delegated });
   }
 
   return (
     <Wrapper
       {...delegated}
+      name={name}
       direction={direction}
       style={{
         ...(delegated.style || {}),
@@ -63,7 +66,7 @@ const FadeIn = ({
     >
       {children}
     </Wrapper>
-  )
-}
+  );
+};
 
-export default FadeIn
+export default FadeIn;

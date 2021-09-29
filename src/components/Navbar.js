@@ -168,7 +168,7 @@ const Navbar = ({ isHome }) => {
                 return (
                   <li key={id}>
                     <FadeIn
-                      direction="down"
+                      name="down"
                       duration={500}
                       delay={index * 50}
                       isDisabled={!isHome}

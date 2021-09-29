@@ -1,10 +1,10 @@
-import React from "react"
-import styled from "styled-components"
-import { Link } from "gatsby"
-import useHasMounted from "../hooks/useHasMounted"
-import FadeIn from "./FadeIn"
-import SocialLink from "./SocialLink"
-import socialLinks from "../constants/social_links"
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'gatsby';
+import useHasMounted from '../hooks/useHasMounted';
+import FadeIn from './FadeIn';
+import SocialLink from './SocialLink';
+import socialLinks from '../constants/social_links';
 
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -55,10 +55,10 @@ const StyledHeroSection = styled.section`
     width: 15rem;
     margin-top: 50px;
   }
-`
+`;
 
 const Hero = () => {
-  const hasMounted = useHasMounted()
+  const hasMounted = useHasMounted();
 
   const textContent = (
     <h1 className="big-heading">
@@ -69,13 +69,13 @@ const Hero = () => {
         Front End Developer. <br />
       </span>
     </h1>
-  )
+  );
 
   const contactButton = (
     <Link to="/#contact" className="contact-btn">
       contact me
     </Link>
-  )
+  );
 
   const social = (
     <div className="social-links">
@@ -83,23 +83,23 @@ const Hero = () => {
         <SocialLink key={link.id} {...link} />
       ))}
     </div>
-  )
+  );
 
-  const items = [textContent, contactButton, social]
+  const items = [textContent, contactButton, social];
 
   if (!hasMounted) {
-    return <StyledHeroSection />
+    return <StyledHeroSection />;
   }
 
   return (
     <StyledHeroSection>
       {items.map((item, i) => (
-        <FadeIn key={i} direction="up" duration={1000} delay={i * 100}>
+        <FadeIn key={i} name="up" duration={1000} delay={i * 100}>
           {item}
         </FadeIn>
       ))}
     </StyledHeroSection>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
