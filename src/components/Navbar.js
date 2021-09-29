@@ -168,7 +168,7 @@ const Navbar = ({ isHome }) => {
                 return (
                   <li key={id}>
                     <FadeIn
-                      name="down"
+                      animationName="down"
                       duration={500}
                       delay={index * 50}
                       isDisabled={!isHome}
@@ -181,9 +181,9 @@ const Navbar = ({ isHome }) => {
             </ul>
           </StyledLinks>
 
-          <div className="dark-toggle">
+          <FadeIn isDisabled={!isHome} className="dark-toggle">
             <DarkToggle />
-          </div>
+          </FadeIn>
 
           <FadeIn isDisabled={!isHome}>
             <Sidebar />
