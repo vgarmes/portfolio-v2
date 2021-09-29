@@ -1,11 +1,13 @@
-import React from "react"
-import styled from "styled-components"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { FaGithubSquare, FaShareSquare } from "react-icons/fa"
+import React from 'react';
+import styled from 'styled-components';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { FaGithubSquare, FaShareSquare } from 'react-icons/fa';
 
 const StyledProject = styled.article`
   display: grid;
   margin-bottom: 4rem;
+  box-shadow: var(--dark-shadow);
+  border-radius: var(--radius);
 
   .project-img {
     border-top-left-radius: var(--radius);
@@ -94,6 +96,8 @@ const StyledProject = styled.article`
   @media screen and (min-width: 992px) {
     grid-template-columns: repeat(12, 1fr);
     align-items: center;
+    box-shadow: none;
+    border-radius: 0;
 
     .project-img {
       grid-column: 1 / span 8;
@@ -125,7 +129,7 @@ const StyledProject = styled.article`
       }
     }
   }
-`
+`;
 
 const Project = ({
   description,
@@ -161,12 +165,12 @@ const Project = ({
         <p className="project-desc">{description}</p>
         <div className="project-stack">
           {stack.map(item => {
-            return <span key={item.id}>{item.name}</span>
+            return <span key={item.id}>{item.name}</span>;
           })}
         </div>
       </div>
     </StyledProject>
-  )
-}
+  );
+};
 
-export default Project
+export default Project;
