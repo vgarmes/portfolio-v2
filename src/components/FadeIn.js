@@ -34,14 +34,15 @@ const animations = {
 
 const Wrapper = styled.div`
   @media (prefers-reduced-motion: no-preference) {
-    animation-name: ${({ name }) => animations[name]};
+    animation-name: ${({ animationName }) => animations[animationName]};
     animation-direction: ${({ direction }) => direction};
     animation-fill-mode: backwards;
   }
 `;
 
 const FadeIn = ({
-  name = 'in',
+  elementType = 'div',
+  animationName = 'in',
   direction = 'normal',
   duration = 300,
   delay = 0,
@@ -55,8 +56,9 @@ const FadeIn = ({
 
   return (
     <Wrapper
+      as={elementType}
       {...delegated}
-      name={name}
+      animationName={animationName}
       direction={direction}
       style={{
         ...(delegated.style || {}),
