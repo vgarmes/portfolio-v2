@@ -30,6 +30,16 @@ const animations = {
     opacity: 1;
   }
 `,
+  right: keyframes`
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`,
 };
 
 const Wrapper = styled.div`
