@@ -94,7 +94,7 @@ const Hero = () => {
   return (
     <StyledHeroSection>
       {items.map((item, i) => (
-        <FadeIn key={i} name="up" duration={1000} delay={i * 100}>
+        <FadeIn key={i} animationName="up" duration={1000} delay={i * 100}>
           {item}
         </FadeIn>
       ))}
