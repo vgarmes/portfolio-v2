@@ -90,7 +90,7 @@ const StyledHamburgerButton = styled.button`
 
 const StyledSidebar = styled.aside`
   display: none;
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletL}) {
     ${({ theme }) => theme.mixins.flexBetween};
     align-items: flex-start;
     flex-direction: column;
@@ -99,7 +99,7 @@ const StyledSidebar = styled.aside`
     bottom: 0;
     right: 0;
     padding: var(--nav-height) 30px;
-    width: min(100%, 300px);
+    width: 50vw;
     height: 100vh;
     outline: 0;
     background-color: var(--color-background);
@@ -108,6 +108,9 @@ const StyledSidebar = styled.aside`
     transform: translateX(${props => (props.isOpen ? 0 : 100)}vw);
     visibility: ${props => (props.isOpen ? 'visible' : 'hidden')};
     transition: var(--transition);
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    width: 100%;
   }
   nav {
     ${({ theme }) => theme.mixins.flexBetween};
@@ -124,11 +127,9 @@ const StyledSidebar = styled.aside`
     li {
       position: relative;
       margin: 0 auto 20px;
-      font-size: var(--fz-xxl);
+      font-size: 28px;
       font-weight: var(--font-weight-semibold);
-      @media (max-width: 600px) {
-        margin: 0 auto 10px;
-      }
+      margin: 0 auto 10px;
     }
     a {
       ${({ theme }) => theme.mixins.link};
