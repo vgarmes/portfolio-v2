@@ -17,7 +17,7 @@ const StyledProject = styled.article`
   }
 
   .project-info {
-    background: var(--clr-white);
+    background: var(--color-subtle-floating);
     padding: 2rem;
     border-bottom-left-radius: var(--radius);
     border-bottom-right-radius: var(--radius);
@@ -31,7 +31,7 @@ const StyledProject = styled.article`
   .project-number {
     display: inline-block;
     font-size: 1.25rem;
-    color: var(--clr-primary-5);
+    color: var(--color-primary);
     margin-bottom: 0.75rem;
   }
   .project-header {
@@ -41,16 +41,12 @@ const StyledProject = styled.article`
   .project-slug h3 {
     font-size: 1.25rem;
     text-transform: capitalize;
-    color: var(--clr-grey-1);
     transition: var(--transition);
     margin-bottom: 0;
   }
-  .project-slug h3:hover {
-    color: var(--clr-primary-5);
-  }
+
   .project-desc {
     word-spacing: 15px;
-    color: var(--clr-grey-1);
   }
   .project-stack {
     margin-bottom: 1rem;
@@ -58,7 +54,7 @@ const StyledProject = styled.article`
   .project-stack span,
   .about-stack span {
     display: inline-block;
-    background: var(--color-homepage-light);
+    background: var(--color-subtle-background);
     color: var(--color-gray-1000);
     margin: 0.25rem;
     padding: 0.25rem 0.5rem;
@@ -74,14 +70,14 @@ const StyledProject = styled.article`
     ${({ theme }) => theme.mixins.flexBetween};
   }
   .project-icon {
-    color: var(--clr-primary-5);
+    color: var(--color-primary);
     font-size: 1.25rem;
     margin-left: 1rem;
     transition: var(--transition);
     vertical-align: middle;
   }
   .project-icon:hover {
-    color: var(--clr-primary-1);
+    color: var(--color-text);
   }
   @media screen and (min-width: 576px) {
     .project-img {

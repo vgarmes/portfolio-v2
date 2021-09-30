@@ -53,7 +53,7 @@ const mixins = {
     &:hover,
     &:focus,
     &:active {
-      background: var(--color-primary);
+      background: var(--color-primary-accent);
       color: var(--color-text);
       outline: none;
     }
