@@ -9,17 +9,6 @@ import Sidebar from './Sidebar';
 import FadeIn from './FadeIn';
 import DarkToggle from './DarkToggle';
 
-const navBarShadow = {
-  small: `
-    0.5px 1px 1px hsl(var(--shadow-color) / 0.7)
-  `,
-  medium: `
-    1px 2px 2px hsl(var(--shadow-color) / 0.333),
-    2px 4px 4px hsl(var(--shadow-color) / 0.333),
-    3px 6px 6px hsl(var(--shadow-color) / 0.333)
-  `,
-};
-
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
   position: fixed;
@@ -48,7 +37,6 @@ const StyledHeader = styled.header`
       css`
         height: var(--nav-scroll-height);
         transform: translateY(0px);
-        box-shadow: ${navBarShadow.medium};
       `};
     ${props =>
       props.scrollDirection === 'down' &&
@@ -56,7 +44,6 @@ const StyledHeader = styled.header`
       css`
         height: var(--nav-scroll-height);
         transform: translateY(calc(var(--nav-scroll-height) * -1));
-        box-shadow: ${navBarShadow.small};
       `};
   }
 `;
