@@ -81,7 +81,7 @@ const mixins = {
     &:focus,
     &:active {
       background: var(--color-primary);
-      color: var(--color-text);
+      color: var(--color-background);
       outline: none;
     }
     &:after {
