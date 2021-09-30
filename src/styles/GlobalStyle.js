@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components"
-import variables from "./variables"
-import TransitionStyles from "./TransitionStyles"
+import { createGlobalStyle } from 'styled-components';
+import variables from './variables';
+import TransitionStyles from './TransitionStyles';
 
 const GlobalStyle = createGlobalStyle`
   ${variables};
@@ -243,6 +243,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ${TransitionStyles}
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;
