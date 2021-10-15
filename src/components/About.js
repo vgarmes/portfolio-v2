@@ -1,12 +1,12 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef } from 'react';
 //import { StaticImage } from "gatsby-plugin-image"
-import styled from "styled-components"
-import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion"
-import sr from "../utils/sr"
-import { srConfig } from "../utils"
-import Title from "./Title"
-import StackIcon from "./StackIcon"
-import stackIcons from "../constants/stack-icons"
+import styled from 'styled-components';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
+import sr from '../utils/sr';
+import { srConfig } from '../utils';
+import Title from './Title';
+import StackIcon from './StackIcon';
+import stackIcons from '../constants/stack-icons';
 
 const StyledAboutContainer = styled.div`
   .about-text-container {
@@ -36,20 +36,20 @@ const StyledAboutContainer = styled.div`
     width: 40%;
     border-radius: var(--radius);
   }
-`
+`;
 
 const About = () => {
-  const titleRef = useRef(null)
-  const containerRef = useRef(null)
-  const prefersReducedMotion = usePrefersReducedMotion()
+  const titleRef = useRef(null);
+  const containerRef = useRef(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     if (prefersReducedMotion) {
-      return
+      return;
     }
-    sr.reveal(titleRef.current, srConfig())
-    sr.reveal(containerRef.current, srConfig(200))
-  }, [prefersReducedMotion])
+    sr.reveal(titleRef.current, srConfig());
+    sr.reveal(containerRef.current, srConfig(200));
+  }, [prefersReducedMotion]);
 
   return (
     <section id="about" ref={containerRef}>
@@ -79,7 +79,7 @@ const About = () => {
         </ul>
       </StyledAboutContainer>
     </section>
-  )
-}
+  );
+};
 
-export default About
+export default About;
