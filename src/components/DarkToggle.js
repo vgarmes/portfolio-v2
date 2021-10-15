@@ -2,6 +2,7 @@ import React from 'react';
 import useDarkMode from '../hooks/useDarkMode';
 import { HiSun, HiMoon } from 'react-icons/hi';
 import styled from 'styled-components';
+import Boop from './Boop';
 
 const Toggle = styled.button`
   ${({ theme }) => theme.mixins.iconButton};
@@ -27,14 +28,16 @@ const DarkToggle = () => {
   }
 
   return (
-    <Toggle
-      aria-label="activate dark mode"
-      onClick={() => {
-        setColorMode(colorMode === 'light' ? 'dark' : 'light');
-      }}
-    >
-      {colorMode === 'light' ? <HiSun /> : <HiMoon />}
-    </Toggle>
+    <Boop rotation={20} timing={200}>
+      <Toggle
+        aria-label="activate dark mode"
+        onClick={() => {
+          setColorMode(colorMode === 'light' ? 'dark' : 'light');
+        }}
+      >
+        {colorMode === 'light' ? <HiSun /> : <HiMoon />}
+      </Toggle>
+    </Boop>
   );
 };
 
