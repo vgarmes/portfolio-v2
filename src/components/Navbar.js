@@ -74,6 +74,9 @@ const StyledNav = styled.nav`
       display: none;
     }
     margin-left: 5rem;
+    & > span {
+      vertical-align: middle;
+    }
   }
 `;
 /* Media query is down to the <a> element so FadeIn is the parent component 
