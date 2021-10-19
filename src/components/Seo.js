@@ -1,7 +1,7 @@
-import React from "react"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
-import { useLocation } from "@reach/router"
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
+import { useLocation } from '@reach/router';
 
 const query = graphql`
   {
@@ -10,36 +10,37 @@ const query = graphql`
         siteTitle: title
         titleTemplate
         siteDescription: description
-        siteUrl: url
-        image
+        siteUrl
+        siteImage: image
         twitterUsername
       }
     }
   }
-`
-const Seo = ({ title, description }) => {
-  const { pathname } = useLocation()
-  const { site } = useStaticQuery(query)
+`;
+const Seo = ({ title, description, image }) => {
+  const { pathname } = useLocation();
+  const { site } = useStaticQuery(query);
 
   const {
     siteTitle,
     titleTemplate,
     siteDescription,
     siteUrl,
-    image,
+    siteImage,
     twitterUsername,
-  } = site.siteMetadata
+  } = site.siteMetadata;
 
   const seo = {
     title: title || siteTitle,
     description: description || siteDescription,
     url: `${siteUrl}${pathname}`,
-  }
+    image: image || siteImage,
+  };
 
   return (
     <Helmet title={seo.title} titleTemplate={titleTemplate}>
       <meta name="description" content={seo.description} />
-      <meta name="image" content={image} />
+      <meta name="image" content={seo.image} />
 
       {seo.url && <meta property="og:url" content={seo.url} />}
 
@@ -49,6 +50,8 @@ const Seo = ({ title, description }) => {
         <meta property="og:description" content={seo.description} />
       )}
 
+      {seo.image && <meta property="og:image" content={seo.image} />}
+
       <meta name="twitter:card" content="summary_large_image" />
       {twitterUsername && (
         <meta name="twitter:creator" content={twitterUsername} />
@@ -57,7 +60,7 @@ const Seo = ({ title, description }) => {
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={image} />
     </Helmet>
-  )
-}
+  );
+};
 
-export default Seo
+export default Seo;
