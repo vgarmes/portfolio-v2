@@ -10,11 +10,11 @@ module.exports = {
     title: `Victor Garcia Portfolio`,
     description: `Personal web development porfolio of Victor Garcia Mestre`,
     titleTemplate: `%s | Victor Garcia Portfolio`,
-    url: ``,
+    url: `https://vgarmes.github.io/portfolio`,
     twitterUsername: `@vgmestre`,
-    image: ``,
+    image: `/cover.png`, // Path to the image placed in the 'static' folder, in the project's root directory.
   },
-  pathPrefix: "/portfolio", // prefix to add to links when building for Github Pages
+  pathPrefix: '/portfolio', // prefix to add to links when building for Github Pages
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
@@ -35,23 +35,23 @@ module.exports = {
         fonts: {
           google: [
             {
-              family: "Roboto",
-              variants: ["400", "700"],
+              family: 'Roboto',
+              variants: ['400', '700'],
             },
             {
-              family: "DM Serif Text",
+              family: 'DM Serif Text',
             },
             {
-              family: "Poppins",
-              variants: ["400", "500", "600", "700"],
+              family: 'Poppins',
+              variants: ['400', '500', '600', '700'],
             },
             {
-              family: "Mulish",
-              variants: ["400", "500", "600", "700"],
+              family: 'Mulish',
+              variants: ['400', '500', '600', '700'],
             },
           ],
         },
       },
     },
   ],
-}
+};
