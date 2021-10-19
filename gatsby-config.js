@@ -6,6 +6,7 @@
 
 module.exports = {
   /* Your site config here */
+  pathPrefix: '/portfolio', // prefix to add to links when building for Github Pages
   siteMetadata: {
     title: `Victor Garcia Portfolio`,
     description: `Personal web development porfolio of Victor Garcia Mestre`,
@@ -14,7 +15,6 @@ module.exports = {
     twitterUsername: `@vgmestre`,
     image: `/ogimage.png`, // Path to the image placed in the 'static' folder, in the project's root directory.
   },
-  pathPrefix: '/portfolio', // prefix to add to links when building for Github Pages
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
