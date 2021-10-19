@@ -7,6 +7,7 @@ import { useLocation } from '@reach/router';
 const query = graphql`
   {
     site {
+      pathPrefix
       siteMetadata {
         siteTitle: title
         titleTemplate
@@ -31,15 +32,18 @@ const Seo = ({ title, description, image }) => {
     twitterUsername,
   } = site.siteMetadata;
 
+  const pathPrefix = site.pathPrefix;
+
   const seo = {
     title: title || siteTitle,
     description: description || siteDescription,
-    url: `${siteUrl}${pathname}`,
+    url: `${siteUrl}${pathname.replace(pathPrefix, '')}`,
     image: `${siteUrl}${image || siteImage}`,
   };
 
   return (
     <Helmet title={seo.title} titleTemplate={titleTemplate}>
+      <link rel="icon" href={`${siteUrl}/favicon.ico`} />
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
 
