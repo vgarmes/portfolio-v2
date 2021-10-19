@@ -12,7 +12,7 @@ module.exports = {
     titleTemplate: `%s | Victor Garcia Portfolio`,
     siteUrl: `https://vgarmes.github.io/portfolio`, // No trailing slash allowed!
     twitterUsername: `@vgmestre`,
-    image: `/cover.png`, // Path to the image placed in the 'static' folder, in the project's root directory.
+    image: `/ogimage.png`, // Path to the image placed in the 'static' folder, in the project's root directory.
   },
   pathPrefix: '/portfolio', // prefix to add to links when building for Github Pages
   plugins: [
