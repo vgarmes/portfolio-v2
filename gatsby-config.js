@@ -10,7 +10,7 @@ module.exports = {
     title: `Victor Garcia Portfolio`,
     description: `Personal web development porfolio of Victor Garcia Mestre`,
     titleTemplate: `%s | Victor Garcia Portfolio`,
-    url: `https://vgarmes.github.io/portfolio`,
+    siteUrl: `https://vgarmes.github.io/portfolio`, // No trailing slash allowed!
     twitterUsername: `@vgmestre`,
     image: `/cover.png`, // Path to the image placed in the 'static' folder, in the project's root directory.
   },
@@ -19,7 +19,9 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`, // Needed for dynamic images
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-strapi`,
       options: {
