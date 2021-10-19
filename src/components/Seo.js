@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 import { useLocation } from '@reach/router';
@@ -34,7 +35,7 @@ const Seo = ({ title, description, image }) => {
     title: title || siteTitle,
     description: description || siteDescription,
     url: `${siteUrl}${pathname}`,
-    image: image || siteImage,
+    image: `${siteUrl}${image || siteImage}`,
   };
 
   return (
@@ -64,3 +65,15 @@ const Seo = ({ title, description, image }) => {
 };
 
 export default Seo;
+
+Seo.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  image: PropTypes.string,
+};
+
+Seo.defaultProps = {
+  title: null,
+  description: null,
+  image: null,
+};
